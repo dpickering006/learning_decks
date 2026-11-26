@@ -10,7 +10,7 @@ import re
 from pathlib import Path
 
 import genanki
-from PIL import Image, ImageDraw, ImageFont
+from diagrams import DIAGRAMS, draw_diagram
 
 ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY = "dpickering006/learning_decks"
@@ -57,77 +57,9 @@ def validate(data: dict) -> None:
             raise ValueError(f"Answer exceeds 20 words: {card['id']}")
         if card["kind"] not in {"recall", "why", "apply"}:
             raise ValueError(f"Unknown question kind: {card['id']}")
-        if card.get("diagram") and card["diagram"] not in DIAGRAMS:
-            raise ValueError(f"Unknown diagram: {card['diagram']}")
-
-
-def draw_diagram(kind: str, directory: Path) -> Path:
-    """Original diagrams, built from geometry; no external image dependencies."""
-    img = Image.new("RGB", (800, 480), "#ffffff")
-    draw = ImageDraw.Draw(img)
-    font = ImageFont.load_default(size=31)
-    small = ImageFont.load_default(size=21)
-    ink, accent = "#172a3a", "#007b80"
-
-    def line(points, fill=ink, width=5):
-        draw.line(points, fill=fill, width=width, joint="curve")
-
-    def label(point, text, fill=ink):
-        if text == "θ":
-            # Pillow's bundled font lacks Greek glyphs; draw the symbol directly.
-            x, y = point
-            draw.ellipse((x - 8, y - 14, x + 8, y + 14), outline=fill, width=2)
-            draw.line([(x - 7, y), (x + 7, y)], fill=fill, width=2)
-            return
-        draw.text(point, text, fill=fill, font=font, anchor="mm")
-
-    if kind == "angles":
-        line([(130, 370), (650, 370), (410, 75), (130, 370)])
-        label((220, 332), "52°")
-        label((563, 332), "67°")
-        label((407, 146), "?")
-    elif kind == "isosceles":
-        line([(160, 370), (640, 370), (400, 65), (160, 370)])
-        label((400, 144), "40°")
-        label((242, 332), "?")
-        label((558, 332), "?")
-        line([(265, 202), (289, 221)], accent)
-        line([(511, 221), (535, 202)], accent)
-    elif kind == "area":
-        line([(100, 365), (680, 365), (460, 65), (100, 365)])
-        for y in range(75, 365, 22):
-            line([(460, y), (460, min(y + 12, 365))], accent, 3)
-        line([(460, 340), (485, 340), (485, 365)], accent, 3)
-        label((390, 402), "12 cm")
-        label((522, 230), "7 cm", accent)
-    else:
-        # Right angle at the bottom right; the marked acute angle is bottom left.
-        line([(150, 365), (650, 365), (650, 75), (150, 365)])
-        line([(623, 365), (623, 338), (650, 338)], accent, 3)
-        labels = DIAGRAMS[kind]
-        for text, point in zip(labels, [(400, 402), (708, 220), (375, 177), (244, 340)]):
-            if text:
-                label(point, text, accent if "?" in text or text == "θ" else ink)
-    draw.text((400, 460), "Diagram not to scale", font=small, fill="#52677b", anchor="mm")
-    # Content-addressed names make media corrections reliable during re-import.
-    import io
-    buffer = io.BytesIO()
-    img.save(buffer, format="PNG")
-    raw = buffer.getvalue()
-    name = f"ld-triangles-{kind}-{hashlib.sha256(raw).hexdigest()[:12]}.png"
-    path = directory / name
-    path.write_bytes(raw)
-    return path
-
-
-DIAGRAMS = {
-    "angles": (), "isosceles": (), "area": (),
-    "pythagoras": ("8 cm", "6 cm", "?", ""),
-    "trig-sides": ("", "", "", "θ"),
-    "trig-sine": ("", "?", "10 cm", "30°"),
-    "trig-tangent": ("8 cm", "?", "", "35°"),
-    "trig-cosine": ("?", "", "12 cm", "40°"),
-}
+        for field in ("diagram", "answer_diagram"):
+            if card.get(field) and card[field] not in DIAGRAMS:
+                raise ValueError(f"Unknown {field}: {card[field]}")
 
 
 def build_deck(data: dict, output: Path, timestamp: int | None = None) -> Path:
@@ -143,15 +75,24 @@ def build_deck(data: dict, output: Path, timestamp: int | None = None) -> Path:
         description=html.escape(data["description"]))
     media = set()
     for card in data["cards"]:
-        diagram = ""
-        if card.get("diagram"):
-            path = draw_diagram(card["diagram"], media_dir)
+        def image_markup(key):
+            if not key:
+                return ""
+            path = draw_diagram(key, media_dir)
             media.add(str(path))
-            diagram = f'<img src="{path.name}" alt="Triangle diagram; all given measurements are also in the question.">'
+            alt = html.escape(DIAGRAMS[key]["alt"], quote=True)
+            return f'<img src="{path.name}" alt="{alt}">'
+
+        diagram = image_markup(card.get("diagram"))
+        back = html.escape(card["back"])
+        if card.get("answer_diagram"):
+            # Keep the permanent five-field model. Answer media belongs in Back,
+            # so it cannot appear in the question or reset learners' card IDs.
+            back += '<div class="diagram explanation">' + image_markup(card["answer_diagram"]) + '</div>'
         note = genanki.Note(model=model,
             guid=genanki.guid_for(GUID_NAMESPACE, data["slug"], card["id"]),
             fields=[html.escape(card["id"]), html.escape(card["front"]),
-                    html.escape(card["back"]), diagram, html.escape(card["topic"])],
+                    back, diagram, html.escape(card["topic"])],
             tags=[data["slug"], card["kind"], card["topic"].lower().replace(" ", "_")])
         deck.add_note(note)
     package = genanki.Package(deck)

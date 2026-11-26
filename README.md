@@ -6,7 +6,9 @@ Short Anki decks for recall, explanation and applying ideas. Attempt each questi
 
 | Deck | Contents | Downloads |
 | --- | --- | --- |
-| NSW Year 9 — Triangles | 40 cards, 8 diagrams: angles, area, Pythagoras, similarity, right-angle trigonometry | [Anki deck (.apkg)](https://github.com/dpickering006/learning_decks/releases/latest/download/nsw-year-9-triangles.apkg) · [Plain CSV](https://github.com/dpickering006/learning_decks/releases/latest/download/nsw-year-9-triangles.csv) |
+| NSW Year 9 — Triangles | 40 cards, 20 question diagrams and 40 answer diagrams: angles, area, Pythagoras, similarity, right-angle trigonometry | [Anki deck (.apkg)](https://github.com/dpickering006/learning_decks/releases/latest/download/nsw-year-9-triangles.apkg) · [Plain CSV](https://github.com/dpickering006/learning_decks/releases/latest/download/nsw-year-9-triangles.csv) |
+
+Every card now has a worked visual explanation on the answer side. Twenty cards also have a question diagram, with the solution hidden until you reveal the answer. Re-import the updated `.apkg` to add these explanations to your existing cards.
 
 **Bookmark [the latest downloads](https://github.com/dpickering006/learning_decks/releases/latest).** Every publication includes all available decks. The links above always retrieve the newest successfully published versions.
 

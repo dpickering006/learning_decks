@@ -1,6 +1,7 @@
 """Exercise package integrity and real Anki imports in disposable collections."""
 from __future__ import annotations
 
+import argparse
 import copy
 import csv
 import html
@@ -63,8 +64,15 @@ def verify(source: Path) -> None:
                 question, answer = card.question(), card.answer()
                 assert note["Front"] in question and note["Back"] in answer
                 assert "{{" not in question + answer, "Unresolved template"
-                for filename in re.findall(r'<img src="([^"]+)"', question):
+                for filename in re.findall(r'<img src="([^"]+)"', answer):
                     assert (Path(collection.media.dir()) / filename).is_file()
+                source_card = next(c for c in data["cards"] if c["id"] == html.unescape(note["CardID"]))
+                answer_images = re.findall(r'<img src="([^"]+)"', note["Back"])
+                assert len(answer_images) == int(bool(source_card.get("answer_diagram")))
+                for filename in answer_images:
+                    assert filename not in question, "Worked diagram leaked onto the question"
+                    assert filename in answer, "Worked diagram missing from the answer"
+                assert note["Back"].startswith(html.escape(source_card["back"]))
             import_package(collection, package)
             assert len(collection.find_cards("")) == count, "Re-import duplicated cards"
 
@@ -92,7 +100,7 @@ def verify(source: Path) -> None:
             newer = build_deck(updated, directory / "updated", timestamp=int(time.time()) + 60)
             import_package(collection, newer)
             assert len(collection.find_cards("")) == count + 1, "New card not added or existing cards duplicated"
-            assert collection.get_card(card.id).note()["Back"] == changed["back"], "Correction did not import"
+            assert collection.get_card(card.id).note()["Back"].startswith(changed["back"]), "Correction did not import"
             assert collection.db.first(
                 "select id,nid,type,queue,due,ivl,factor,reps,lapses from cards where id=?", card.id) == before
             assert collection.db.all("select * from revlog where cid=?", card.id) == reviews
@@ -101,6 +109,44 @@ def verify(source: Path) -> None:
     print(f"PASS {data['slug']}: {count} cards, bundled media, CSV, native rendering, duplicate-free import, update, new card, review preservation")
 
 
+def verify_previous(previous: Path, current: Path) -> None:
+    """Check migration from a real earlier package, including all note/card IDs."""
+    with tempfile.TemporaryDirectory(prefix="learning-decks-upgrade-") as temporary:
+        collection = Collection(str(Path(temporary) / "collection.anki2"))
+        try:
+            import_package(collection, previous)
+            identities = collection.db.all("select c.id,n.guid from cards c join notes n on c.nid=n.id order by c.id")
+            deck_id = collection.get_card(collection.find_cards("")[0]).did
+            collection.decks.select(deck_id)
+            card = collection.sched.getCard()
+            assert card is not None
+            states = collection._backend.get_scheduling_states(card.id)
+            collection.sched.answer_card(collection.sched.build_answer(
+                card=card, states=states, rating=CardAnswer.EASY))
+            schedule = collection.db.all("select id,nid,type,queue,due,ivl,factor,reps,lapses from cards order by id")
+            reviews = collection.db.all("select * from revlog")
+            import_package(collection, current)
+            assert collection.db.all("select c.id,n.guid from cards c join notes n on c.nid=n.id order by c.id") == identities
+            assert collection.db.all("select id,nid,type,queue,due,ivl,factor,reps,lapses from cards order by id") == schedule
+            assert collection.db.all("select * from revlog") == reviews
+            for cid in collection.find_cards(""):
+                card = collection.get_card(cid)
+                images = re.findall(r'<img src="([^"]+)"', card.note()["Back"])
+                assert images, "Earlier card did not receive its explanation diagram"
+                for filename in images:
+                    assert filename not in card.question()
+                    assert filename in card.answer()
+                    assert (Path(collection.media.dir()) / filename).is_file()
+            print(f"PASS earlier-package upgrade: {len(identities)} identities, schedules and reviews preserved; answer diagrams received")
+        finally:
+            collection.close()
+
+
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--previous-package", type=Path, help="Earlier .apkg to test upgrading to the same-named current package")
+    args = parser.parse_args()
     for source in sorted((ROOT / "sources").glob("*.json")):
         verify(source)
+    if args.previous_package:
+        verify_previous(args.previous_package, ROOT / "dist" / args.previous_package.name)

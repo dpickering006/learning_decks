@@ -43,7 +43,19 @@ The builder derives each Anki GUID from a permanent namespace, deck slug and car
 
 ## Diagrams
 
-`diagram` is optional. The current triangle diagrams are generated in `scripts/build.py`; add a renderer and register it in `DIAGRAMS` for a new diagram. Every referenced image is bundled in the package and given a content-based filename so updated images import correctly. Keep labels readable on a phone. View the actual generated image to catch missing glyphs or overlapping labels.
+Both `diagram` (question side) and `answer_diagram` (revealed answer only) are optional scene names from `DIAGRAMS` in `scripts/diagrams.py`. Each scene includes a family, labelled geometry, explanation steps and descriptive alternative text. Register a new scene, or add a renderer for a new geometry family. Do not put worked answers in question scenes, including their titles and alternative text.
+
+The builder appends answer images to the existing `Back` field. Keep the permanent model ID, five fields, template and note GUIDs unchanged when adding diagrams. CSV exports retain the original plain-text answers.
+
+Every referenced image is bundled in the package and given a content-based filename so updated images import correctly. Keep labels readable on a phone. The bundled Noto Sans and Noto Sans Math fonts cover mathematical symbols consistently across computers; the renderer rejects unsupported glyphs and labels outside the image. View the actual generated images to catch overlaps and mathematical mistakes. Font provenance and licence are in `assets/fonts/README.md` and `OFL.txt`.
+
+To check upgrading a previously published deck, keep its `.apkg` outside `dist`, build the new version, then run:
+
+```sh
+python scripts/verify.py --previous-package /path/to/earlier/nsw-year-9-triangles.apkg
+```
+
+This additionally verifies the original card identities, scheduling and review history survive and that the new answer diagrams appear only after revealing.
 
 ## Publication
 
