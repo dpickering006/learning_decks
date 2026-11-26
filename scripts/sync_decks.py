@@ -1,4 +1,4 @@
-"""Subscribe one AnkiWeb account to this repository's published decks.
+"""Subscribe separate AnkiWeb accounts to selected published decks.
 
 Uses Anki's own backend in a separate collection, never an open desktop profile.
 Credentials and collection data live outside the Git checkout. Normal operation
@@ -111,20 +111,73 @@ def read_json(url: str):
     return response.json()
 
 
-def fetch_packages(release: dict, directory: Path) -> list[Path]:
-    """Pin all downloads to one release and verify each package's checksum."""
+def account_state(root: Path, account: str | None) -> Path:
+    if account is None:
+        return root
+    if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", account):
+        raise ValueError("Account labels must use lowercase letters, numbers and hyphens")
+    return root / "accounts" / account
+
+
+def subscriptions(state: Path) -> list[str] | None:
+    path = state / "subscriptions.json"
+    if not path.exists():
+        # Backwards compatibility for the original account only. New named
+        # accounts must have an explicit list, never inherit all public decks.
+        if state.parent.name == "accounts":
+            raise SetupRequired("Choose this account's decks with configure --decks before connecting it.")
+        return None
+    value = json.loads(path.read_text())
+    if value == {"decks": "all"}:
+        return None
+    decks = value.get("decks")
+    if not isinstance(decks, list) or not decks or any(
+        not isinstance(slug, str) or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug) for slug in decks
+    ):
+        raise ValueError("Invalid deck subscriptions")
+    return sorted(set(decks))
+
+
+def release_catalogue(release: dict) -> tuple[dict, list]:
     assets = {item["name"]: item["browser_download_url"] for item in release["assets"]}
     prefix = f"https://github.com/{REPOSITORY}/releases/download/"
     if not all(url.startswith(prefix) for url in assets.values()):
         raise ValueError("Unexpected release asset origin")
     catalogue = read_json(assets["catalog.json"])
-    packages = []
     seen = set()
     for deck in catalogue:
         slug = deck["slug"]
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug) or slug in seen:
             raise ValueError("Invalid or duplicate deck slug")
         seen.add(slug)
+    return assets, catalogue
+
+
+def select_decks(catalogue: list, selected: list[str] | None) -> list:
+    if selected is None:
+        return catalogue
+    unknown = set(selected) - {deck["slug"] for deck in catalogue}
+    if unknown:
+        raise ValueError("Unknown deck subscription: " + ", ".join(sorted(unknown)))
+    return [deck for deck in catalogue if deck["slug"] in selected]
+
+
+def configure(state: Path, decks: list[str], release: dict) -> None:
+    _, catalogue = release_catalogue(release)
+    if not decks:
+        raise ValueError("Select at least one deck, or use all explicitly")
+    selected = None if decks == ["all"] else sorted(set(decks))
+    select_decks(catalogue, selected)
+    private_write(state / "subscriptions.json", (json.dumps({"decks": selected if selected is not None else "all"}, indent=2) + "\n").encode())
+
+
+def fetch_packages(release: dict, directory: Path, selected: list[str] | None = None) -> list[Path]:
+    """Pin all downloads to one release and verify each package's checksum."""
+    assets, catalogue = release_catalogue(release)
+    catalogue = select_decks(catalogue, selected)
+    packages = []
+    for deck in catalogue:
+        slug = deck["slug"]
         if not re.fullmatch(r"[0-9a-f]{64}", deck["sha256"]):
             raise ValueError("Invalid package checksum")
         path = directory / f"{slug}.apkg"
@@ -150,6 +203,9 @@ def fetch_packages(release: dict, directory: Path) -> list[Path]:
 def apply_packages(state: Path, packages: list[Path]) -> None:
     if not (state / "ready").exists():
         raise SetupRequired("Run setup once to connect your AnkiWeb account.")
+    selected = subscriptions(state)
+    if selected is not None and any(path.stem not in selected for path in packages):
+        raise ValueError("Refusing a deck outside this account's subscriptions")
     auth = SyncAuth.FromString((state / "auth.bin").read_bytes())
     collection = Collection(str(state / "collection.anki2"))
     try:
@@ -171,32 +227,55 @@ def apply_packages(state: Path, packages: list[Path]) -> None:
 def run(state: Path) -> None:
     if not (state / "ready").exists():
         raise SetupRequired("Run setup once to connect your AnkiWeb account.")
+    selected = subscriptions(state)
+    selection_key = selected if selected is not None else "all"
     release = read_json(f"https://api.github.com/repos/{REPOSITORY}/releases/latest")
     applied = state / "applied.json"
     previous = json.loads(applied.read_text()) if applied.exists() else {}
-    if previous.get("release_id") == release["id"]:
+    if previous.get("release_id") == release["id"] and previous.get("decks", "all") == selection_key:
         print("Already up to date.")
         return
     with tempfile.TemporaryDirectory(prefix="download-", dir=state) as temporary:
-        packages = fetch_packages(release, Path(temporary))
+        packages = fetch_packages(release, Path(temporary), selected)
         apply_packages(state, packages)
-    private_write(applied, (json.dumps({"release_id": release["id"], "tag": release["tag_name"],
+    private_write(applied, (json.dumps({"release_id": release["id"], "tag": release["tag_name"], "decks": selection_key,
         "synced_at": datetime.now(timezone.utc).isoformat()}, indent=2) + "\n").encode())
     print(f"Published deck update synced to AnkiWeb: {release['tag_name']}. Tap Sync on your iPhone.")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("setup", "run", "status", "reauth"))
+    parser.add_argument("command", choices=("setup", "run", "status", "reauth", "configure", "list-decks"))
     parser.add_argument("--state", type=Path, default=DEFAULT_STATE)
+    parser.add_argument("--account", help="Separate account label, e.g. anna; omitted uses the original account")
+    parser.add_argument("--decks", nargs="+", help="Published deck slugs, or all; used with configure")
     args = parser.parse_args()
     os.umask(0o077)
-    state = args.state.expanduser().resolve()
+    root = args.state.expanduser().resolve()
+    state = account_state(root, args.account)
+    if args.command == "configure" and not args.decks:
+        parser.error("configure requires --decks")
+    if args.decks and args.command != "configure":
+        parser.error("--decks is only used with configure")
     with locked(state):
-        if args.command == "setup":
+        if args.command in ("configure", "list-decks"):
+            release = read_json(f"https://api.github.com/repos/{REPOSITORY}/releases/latest")
+            if args.command == "configure":
+                configure(state, args.decks, release)
+                print("Deck subscriptions saved. Previously imported decks are not deleted.")
+            else:
+                _, catalogue = release_catalogue(release)
+                for deck in catalogue:
+                    print(f"{deck['slug']}: {deck['name']}")
+        elif args.command == "setup":
+            subscriptions(state)  # Fail before asking for credentials if unconfigured.
             print("First sync your existing cards from AnkiMobile to AnkiWeb.")
             print("Use the same AnkiWeb account here. Your password will not be saved.")
             email = input("AnkiWeb email: ").strip()
+            other_accounts = [root / "account.txt", *root.glob("accounts/*/account.txt")]
+            if any(path.parent != state and path.exists() and path.read_text().strip() == email.casefold()
+                   for path in other_accounts):
+                raise SetupRequired("That AnkiWeb account is already connected under another profile. Use a separate account.")
             password = getpass.getpass("AnkiWeb password: ")
             initialize(state, email, password)
             del password
@@ -220,6 +299,11 @@ def main() -> None:
             run(state)
         else:
             print("Account connected." if (state / "ready").exists() else "Waiting for one-time AnkiWeb sign-in.")
+            try:
+                chosen = subscriptions(state)
+                print("Deck subscriptions: " + (", ".join(chosen) if chosen is not None else "all published decks"))
+            except SetupRequired:
+                print("Deck subscriptions: not selected yet.")
             if (state / "applied.json").exists():
                 print((state / "applied.json").read_text())
 

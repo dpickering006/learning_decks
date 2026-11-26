@@ -32,6 +32,8 @@ For iPhone/iPad users who want to avoid repeated downloads, the optional
 [Ubuntu background updater](SYNC.md) imports new GitHub releases into your
 AnkiWeb account. After one-time setup, tap **Sync** in AnkiMobile to receive
 new cards and diagrams. The updater checks every five minutes while online.
+Each learner can have a separate AnkiWeb account and a selected list of decks;
+their review progress stays separate. See [account subscriptions](SYNC.md#different-decks-for-different-accounts).
 
 GitHub hosts the download; it is not an Anki sync server. Standard Anki apps do not subscribe to this repository and automatically fetch new decks. Download a new deck when you want it, or download and import an existing deck again to receive corrections and additions. Do not delete the existing deck first.
 

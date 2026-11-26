@@ -1,0 +1,14 @@
+[Unit]
+Description=Sync selected learning decks for account %i
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=%h/.local/share/learning-decks-sync/accounts/%i/ready
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/.local/share/learning-decks-updater
+ExecStart=%h/.local/share/learning-decks-updater/.venv/bin/python scripts/sync_decks.py run --account %i
+UMask=0077
+NoNewPrivileges=true
+TimeoutStartSec=25min
+
