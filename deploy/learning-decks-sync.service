@@ -1,0 +1,14 @@
+[Unit]
+Description=Import published learning decks and sync them through AnkiWeb
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=%h/.local/share/learning-decks-sync/ready
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/.local/share/learning-decks-updater
+ExecStart=%h/.local/share/learning-decks-updater/.venv/bin/python scripts/sync_decks.py run
+UMask=0077
+NoNewPrivileges=true
+TimeoutStartSec=25min
+

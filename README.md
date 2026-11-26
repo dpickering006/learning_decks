@@ -28,6 +28,11 @@ Official import help: [AnkiMobile](https://docs.ankiweb.net/ankimobile/shared-de
 
 ## Receive updates
 
+For iPhone/iPad users who want to avoid repeated downloads, the optional
+[Ubuntu background updater](SYNC.md) imports new GitHub releases into your
+AnkiWeb account. After one-time setup, tap **Sync** in AnkiMobile to receive
+new cards and diagrams. The updater checks every five minutes while online.
+
 GitHub hosts the download; it is not an Anki sync server. Standard Anki apps do not subscribe to this repository and automatically fetch new decks. Download a new deck when you want it, or download and import an existing deck again to receive corrections and additions. Do not delete the existing deck first.
 
 When import options are available, leave **Import any learning progress** off and use **Update notes: If newer**. These packages contain no learner review history. Permanent note IDs allow matching cards to update while preserving your existing reviews; this is checked using Anki's own importer. If you edit a card locally after a release, Anki may keep your newer copy. Choose **Always** only when you intentionally want the published text to replace your edits.

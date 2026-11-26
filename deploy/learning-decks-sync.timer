@@ -1,0 +1,13 @@
+[Unit]
+Description=Check GitHub for learning-deck updates every five minutes
+
+[Timer]
+OnCalendar=*:0/5
+Persistent=true
+RandomizedDelaySec=15s
+AccuracySec=30s
+Unit=learning-decks-sync.service
+
+[Install]
+WantedBy=timers.target
+
