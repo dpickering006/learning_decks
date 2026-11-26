@@ -1,0 +1,919 @@
+{
+  "pyth-principles-001-answer": {
+    "family": "right",
+    "base": "a",
+    "vertical": "b",
+    "hyp": "c",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "The right angle tells you where c goes",
+    "steps": [
+      "Square both legs, then add.",
+      "a² + b² = c²"
+    ],
+    "alt": "State Pythagoras’ theorem for a right triangle with legs a and b and hypotenuse c. a² + b² = c². The hypotenuse c is opposite the right angle. Square both legs, then add. a² + b² = c²"
+  },
+  "pyth-principles-002-answer": {
+    "family": "pythagoras",
+    "layout": "rotated",
+    "labels": [
+      "leg",
+      "leg",
+      "hypotenuse"
+    ],
+    "title": "Find 90°, then look across",
+    "steps": [
+      "The opposite side is the hypotenuse.",
+      "Its position on the page does not matter."
+    ],
+    "alt": "How do you identify the hypotenuse, even when a right triangle is drawn upside down? Find the right angle; the side opposite it is the hypotenuse and the longest side. The opposite side is the hypotenuse. Its position on the page does not matter."
+  },
+  "pyth-principles-003-answer": {
+    "family": "right",
+    "base": "a",
+    "vertical": "b",
+    "hyp": "c",
+    "angle": "",
+    "title": "The two legs can swap labels",
+    "steps": [
+      "a² + b² = b² + a²",
+      "c always labels the hypotenuse."
+    ],
+    "alt": "In a² + b² = c², why can a and b swap names but c cannot swap with a leg? Addition lets the legs swap; c must remain the hypotenuse opposite the right angle. a² + b² = b² + a² c always labels the hypotenuse."
+  },
+  "pyth-principles-004-answer": {
+    "family": "pythagoras",
+    "layout": "nonright",
+    "left": "a",
+    "right": "b",
+    "base": "c",
+    "angle": "?",
+    "angle_vertex": "top",
+    "title": "A sketch is not evidence of 90°",
+    "steps": [
+      "Look for a stated or established right angle.",
+      "Do not decide from appearance alone."
+    ],
+    "alt": "A sketch looks right-angled but has no angle marking or measurements. Why is that insufficient for Pythagoras? A sketch is not proof. You need a stated, marked or established right angle. Look for a stated or established right angle. Do not decide from appearance alone."
+  },
+  "pyth-principles-005-answer": {
+    "family": "pythagoras",
+    "layout": "rotated",
+    "labels": [
+      "AB",
+      "AC",
+      "BC"
+    ],
+    "vertices": true,
+    "title": "The right-angle vertex is A",
+    "steps": [
+      "The two sides touching A are the legs.",
+      "BC faces A, so BC is the hypotenuse."
+    ],
+    "alt": "Triangle ABC is right-angled at A. Which side must be the hypotenuse? BC, because it is opposite the right angle at A. The two sides touching A are the legs. BC faces A, so BC is the hypotenuse."
+  },
+  "pyth-principles-005-question": {
+    "family": "pythagoras",
+    "layout": "rotated",
+    "labels": [
+      "AB",
+      "AC",
+      "BC"
+    ],
+    "vertices": true,
+    "title": "Sketch the problem",
+    "steps": [],
+    "alt": "Triangle ABC is right-angled at A. Which side must be the hypotenuse?",
+    "highlight": false
+  },
+  "pyth-principles-006-answer": {
+    "family": "squares",
+    "labels": [
+      "a²",
+      "b²",
+      "c²"
+    ],
+    "title": "Pythagoras compares square areas",
+    "steps": [
+      "Area on leg a + area on leg b",
+      "equals the area on hypotenuse c."
+    ],
+    "alt": "What does a² + b² = c² mean if you draw a square on each side of a right triangle? The areas of the two squares on the legs add to the area of the square on the hypotenuse. Area on leg a + area on leg b equals the area on hypotenuse c."
+  },
+  "pyth-principles-007-answer": {
+    "family": "right",
+    "base": "a",
+    "vertical": "b",
+    "hyp": "c = ?",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "Missing hypotenuse: add the squares",
+    "steps": [
+      "c² = a² + b²",
+      "c = √(a² + b²)"
+    ],
+    "alt": "What formula finds a missing hypotenuse from known legs a and b? c = √(a² + b²): square, add, then take the square root. c² = a² + b² c = √(a² + b²)"
+  },
+  "pyth-principles-008-answer": {
+    "family": "right",
+    "base": "a",
+    "vertical": "b = ?",
+    "hyp": "c",
+    "angle": "",
+    "highlight": "vertical",
+    "title": "Missing leg: subtract the squares",
+    "steps": [
+      "a² + b² = c²  →  b² = c² − a²",
+      "b = √(c² − a²)"
+    ],
+    "alt": "What formula finds missing leg b from hypotenuse c and other leg a? b = √(c² − a²): square, subtract, then take the square root. a² + b² = c²  →  b² = c² − a² b = √(c² − a²)"
+  },
+  "pyth-principles-009-answer": {
+    "family": "right",
+    "base": "15 cm",
+    "vertical": "8 cm",
+    "hyp": "17 cm",
+    "angle": "",
+    "highlight": "vertical",
+    "title": "Remove the known leg’s square",
+    "steps": [
+      "b² = 17² − 15² = 289 − 225 = 64",
+      "b = √64 = 8 cm"
+    ],
+    "alt": "A right triangle has hypotenuse 17 cm and a leg 15 cm. Why subtract 15² from 17²? The hypotenuse square equals both leg squares combined; subtracting one leaves the other. b² = 17² − 15² = 289 − 225 = 64 b = √64 = 8 cm"
+  },
+  "pyth-principles-010-answer": {
+    "family": "right",
+    "base": "a",
+    "vertical": "b",
+    "hyp": "x = 9",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "A square is not yet a side length",
+    "steps": [
+      "x² = 81  →  x = √81",
+      "x = 9; a side length is positive."
+    ],
+    "alt": "You find x² = 81 when calculating a triangle’s side. What is x? 9, because √81 = 9 and a side length is positive. x² = 81  →  x = √81 x = 9; a side length is positive."
+  },
+  "pyth-principles-011-answer": {
+    "family": "right",
+    "base": "4 m",
+    "vertical": "3 m",
+    "hyp": "5 m",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "Use one unit before squaring",
+    "steps": [
+      "300 cm = 3 m",
+      "c = √(3² + 4²) = 5 m"
+    ],
+    "alt": "A right triangle’s legs are 300 cm and 4 m. Find its hypotenuse in metres. 5 m. First convert 300 cm to 3 m; then √(3² + 4²) = 5. 300 cm = 3 m c = √(3² + 4²) = 5 m"
+  },
+  "pyth-principles-012-answer": {
+    "family": "right",
+    "base": "4 cm",
+    "vertical": "3 cm",
+    "hyp": "5 cm",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "Square units become length units",
+    "steps": [
+      "c² = 25 cm²",
+      "c = √25 cm = 5 cm"
+    ],
+    "alt": "If c² = 25 cm², what is the hypotenuse length and its unit? c = 5 cm. Taking the square root converts squared centimetres back to centimetres. c² = 25 cm² c = √25 cm = 5 cm"
+  },
+  "pyth-principles-013-answer": {
+    "family": "right",
+    "base": "4",
+    "vertical": "3",
+    "hyp": "5",
+    "angle": "",
+    "title": "Whole-number sides of a right triangle",
+    "steps": [
+      "3² + 4² = 9 + 16 = 25",
+      "25 = 5², so (3, 4, 5) is a triple."
+    ],
+    "alt": "What is a Pythagorean triple? Three positive integers whose two smaller squares sum to the largest square. 3² + 4² = 9 + 16 = 25 25 = 5², so (3, 4, 5) is a triple."
+  },
+  "pyth-principles-014-answer": {
+    "family": "right",
+    "base": "4",
+    "vertical": "3",
+    "hyp": "5",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "Common triple: 3, 4, 5",
+    "steps": [
+      "3² + 4² = 9 + 16 = 25",
+      "√25 = 5; the largest number goes opposite 90°."
+    ],
+    "alt": "A right triangle has legs 3 and 4. Complete the common triple by giving its hypotenuse. 5: 3² + 4² = 9 + 16 = 25 = 5². 3² + 4² = 9 + 16 = 25 √25 = 5; the largest number goes opposite 90°."
+  },
+  "pyth-principles-015-answer": {
+    "family": "right",
+    "base": "12",
+    "vertical": "5",
+    "hyp": "13",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "Common triple: 5, 12, 13",
+    "steps": [
+      "5² + 12² = 25 + 144 = 169",
+      "√169 = 13; the largest number goes opposite 90°."
+    ],
+    "alt": "A right triangle has legs 5 and 12. Complete the common triple by giving its hypotenuse. 13: 5² + 12² = 25 + 144 = 169 = 13². 5² + 12² = 25 + 144 = 169 √169 = 13; the largest number goes opposite 90°."
+  },
+  "pyth-principles-016-answer": {
+    "family": "right",
+    "base": "15",
+    "vertical": "8",
+    "hyp": "17",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "Common triple: 8, 15, 17",
+    "steps": [
+      "8² + 15² = 64 + 225 = 289",
+      "√289 = 17; the largest number goes opposite 90°."
+    ],
+    "alt": "A right triangle has legs 8 and 15. Complete the common triple by giving its hypotenuse. 17: 8² + 15² = 64 + 225 = 289 = 17². 8² + 15² = 64 + 225 = 289 √289 = 17; the largest number goes opposite 90°."
+  },
+  "pyth-principles-017-answer": {
+    "family": "right",
+    "base": "24",
+    "vertical": "7",
+    "hyp": "25",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "Common triple: 7, 24, 25",
+    "steps": [
+      "7² + 24² = 49 + 576 = 625",
+      "√625 = 25; the largest number goes opposite 90°."
+    ],
+    "alt": "A right triangle has legs 7 and 24. Complete the common triple by giving its hypotenuse. 25: 7² + 24² = 49 + 576 = 625 = 25². 7² + 24² = 49 + 576 = 625 √625 = 25; the largest number goes opposite 90°."
+  },
+  "pyth-principles-018-answer": {
+    "family": "right",
+    "base": "40",
+    "vertical": "9",
+    "hyp": "41",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "Common triple: 9, 40, 41",
+    "steps": [
+      "9² + 40² = 81 + 1600 = 1681",
+      "√1681 = 41; the largest number goes opposite 90°."
+    ],
+    "alt": "A right triangle has legs 9 and 40. Complete the common triple by giving its hypotenuse. 41: 9² + 40² = 81 + 1600 = 1681 = 41². 9² + 40² = 81 + 1600 = 1681 √1681 = 41; the largest number goes opposite 90°."
+  },
+  "pyth-principles-019-answer": {
+    "family": "right",
+    "base": "8 cm",
+    "vertical": "6 cm",
+    "hyp": "10 cm",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "Scale the whole triple by 2",
+    "steps": [
+      "(3, 4, 5) × 2 = (6, 8, 10)",
+      "Check: 36 + 64 = 100."
+    ],
+    "alt": "A right triangle has legs 6 cm and 8 cm. Use the 3–4–5 pattern to find its hypotenuse. 10 cm: multiply every side of 3–4–5 by 2. (3, 4, 5) × 2 = (6, 8, 10) Check: 36 + 64 = 100."
+  },
+  "pyth-principles-020-answer": {
+    "family": "right",
+    "base": "12 cm",
+    "vertical": "9 cm",
+    "hyp": "15 cm",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "Scale the whole triple by 3",
+    "steps": [
+      "(3, 4, 5) × 3 = (9, 12, 15)",
+      "Check: 81 + 144 = 225."
+    ],
+    "alt": "A right triangle has legs 9 cm and 12 cm. Use the 3–4–5 pattern to find its hypotenuse. 15 cm: multiply every side of 3–4–5 by 3. (3, 4, 5) × 3 = (9, 12, 15) Check: 81 + 144 = 225."
+  },
+  "pyth-principles-021-answer": {
+    "family": "right",
+    "base": "16 cm",
+    "vertical": "12 cm",
+    "hyp": "20 cm",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "Scale the whole triple by 4",
+    "steps": [
+      "(3, 4, 5) × 4 = (12, 16, 20)",
+      "Check: 144 + 256 = 400."
+    ],
+    "alt": "A right triangle has legs 12 cm and 16 cm. Use the 3–4–5 pattern to find its hypotenuse. 20 cm: multiply every side of 3–4–5 by 4. (3, 4, 5) × 4 = (12, 16, 20) Check: 144 + 256 = 400."
+  },
+  "pyth-principles-022-answer": {
+    "family": "right",
+    "base": "0.8 m",
+    "vertical": "0.6 m",
+    "hyp": "1 m",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "The pattern also works with decimals",
+    "steps": [
+      "(3, 4, 5) × 0.2 = (0.6, 0.8, 1)",
+      "0.6² + 0.8² = 0.36 + 0.64 = 1"
+    ],
+    "alt": "A right triangle has legs 0.6 m and 0.8 m. Use a familiar side ratio to find its hypotenuse. 1 m: these are 3–4–5 lengths multiplied by 0.2. (3, 4, 5) × 0.2 = (0.6, 0.8, 1) 0.6² + 0.8² = 0.36 + 0.64 = 1"
+  },
+  "pyth-principles-023-answer": {
+    "family": "similar",
+    "labels": [
+      "a",
+      "b",
+      "ka",
+      "kb"
+    ],
+    "factor": "× k",
+    "title": "Scale every side by the same factor",
+    "steps": [
+      "(ka)² + (kb)² = k²(a² + b²)",
+      "k²c² = (kc)²: the equation still holds."
+    ],
+    "alt": "Why does multiplying every side of a Pythagorean triple by the same positive number preserve the right angle? Each square gains the same factor k², so a² + b² = c² remains true. (ka)² + (kb)² = k²(a² + b²) k²c² = (kc)²: the equation still holds."
+  },
+  "pyth-principles-024-answer": {
+    "family": "right",
+    "base": "12",
+    "vertical": "9",
+    "hyp": "15",
+    "angle": "",
+    "show90": true,
+    "title": "Use the longest side as the test side",
+    "steps": [
+      "9² + 12² = 81 + 144 = 225",
+      "15² = 225, so the opposite angle is 90°."
+    ],
+    "alt": "How can side lengths 9, 12 and 15 establish that a triangle is right-angled? 9² + 12² = 15²; by the converse of Pythagoras, the angle opposite 15 is 90°. 9² + 12² = 81 + 144 = 225 15² = 225, so the opposite angle is 90°."
+  },
+  "pyth-principles-025-answer": {
+    "family": "pythagoras",
+    "layout": "nonright",
+    "left": "4",
+    "right": "5",
+    "base": "6",
+    "angle": "≠ 90°",
+    "angle_vertex": "top",
+    "title": "Similar-looking numbers may fail the test",
+    "steps": [
+      "4² + 5² = 16 + 25 = 41",
+      "6² = 36; 41 ≠ 36."
+    ],
+    "alt": "Why are 4, 5 and 6 not a Pythagorean triple? 4² + 5² = 41, but 6² = 36. The squares do not match. 4² + 5² = 16 + 25 = 41 6² = 36; 41 ≠ 36."
+  },
+  "pyth-principles-026-answer": {
+    "family": "pythagoras",
+    "hyp": "5√2 cm",
+    "title": "Some lengths stay as square roots",
+    "steps": [
+      "c² = 25 + 25 = 50",
+      "c = √50 = 5√2 cm"
+    ],
+    "alt": "A right triangle has legs 5 cm and 5 cm. Give its hypotenuse exactly, without a decimal approximation. 5√2 cm: √(5² + 5²) = √50 = 5√2. c² = 25 + 25 = 50 c = √50 = 5√2 cm",
+    "layout": "equal-right",
+    "leg": "5 cm"
+  },
+  "pyth-principles-027-answer": {
+    "family": "pythagoras",
+    "layout": "equal-right",
+    "leg": "x",
+    "hyp": "x√2",
+    "title": "The 45°–45°–90° side pattern",
+    "steps": [
+      "Equal legs: x and x",
+      "Hypotenuse: √(2x²) = x√2"
+    ],
+    "alt": "A right isosceles triangle has equal legs x. What is its hypotenuse in terms of x? x√2, because c² = x² + x² = 2x². Equal legs: x and x Hypotenuse: √(2x²) = x√2"
+  },
+  "pyth-principles-028-answer": {
+    "family": "right",
+    "base": "11 cm",
+    "vertical": "8 cm",
+    "hyp": "13.6 cm",
+    "angle": "",
+    "highlight": "hyp",
+    "title": "Round only the final length",
+    "steps": [
+      "c = √(8² + 11²) = √185",
+      "√185 ≈ 13.6015 → 13.6 cm"
+    ],
+    "alt": "A right triangle has legs 8 cm and 11 cm. Find the hypotenuse to one decimal place. 13.6 cm: keep √185 unrounded until the final answer. c = √(8² + 11²) = √185 √185 ≈ 13.6015 → 13.6 cm"
+  },
+  "pyth-questions-001-answer": {
+    "family": "right",
+    "base": "distance",
+    "vertical": "height",
+    "hyp": "ladder",
+    "angle": "",
+    "context": "ladder",
+    "highlight": "hyp",
+    "title": "“Vertical wall” + “level ground” means 90°",
+    "steps": [
+      "Wall and ground form the two legs.",
+      "The ladder is the hypotenuse."
+    ],
+    "alt": "A ladder leans against a vertical wall on level ground. Which length represents the hypotenuse? The ladder’s length: the ladder is opposite the right angle between wall and ground. Wall and ground form the two legs. The ladder is the hypotenuse."
+  },
+  "pyth-questions-002-answer": {
+    "family": "right",
+    "base": "5 m",
+    "vertical": "12 m",
+    "hyp": "13 m",
+    "angle": "",
+    "context": "ladder",
+    "highlight": "vertical",
+    "title": "The ladder is given; find a leg",
+    "steps": [
+      "h² = 13² − 5² = 144",
+      "h = 12 m; it must be less than 13 m."
+    ],
+    "alt": "A 13 m ladder leans against a vertical wall. Its foot is 5 m from the wall on level ground. How high does it reach? 12 m: h = √(13² − 5²) = √144. h² = 13² − 5² = 144 h = 12 m; it must be less than 13 m."
+  },
+  "pyth-questions-002-question": {
+    "family": "right",
+    "base": "5 m",
+    "vertical": "h = ?",
+    "hyp": "13 m",
+    "angle": "",
+    "context": "ladder",
+    "highlight": "",
+    "title": "Sketch the problem",
+    "steps": [],
+    "alt": "A 13 m ladder leans against a vertical wall. Its foot is 5 m from the wall on level ground. How high does it reach?"
+  },
+  "pyth-questions-003-answer": {
+    "family": "right",
+    "base": "6 m",
+    "vertical": "8 m",
+    "hyp": "10 m",
+    "angle": "",
+    "context": "ladder",
+    "highlight": "base",
+    "title": "“Foot from the wall” is horizontal distance",
+    "steps": [
+      "d² = 10² − 8² = 36",
+      "d = 6 m"
+    ],
+    "alt": "A 10 m ladder reaches 8 m up a vertical wall. How far is its foot from the wall on level ground? 6 m: d = √(10² − 8²) = √36. d² = 10² − 8² = 36 d = 6 m"
+  },
+  "pyth-questions-003-question": {
+    "family": "right",
+    "base": "d = ?",
+    "vertical": "8 m",
+    "hyp": "10 m",
+    "angle": "",
+    "context": "ladder",
+    "highlight": "",
+    "title": "Sketch the problem",
+    "steps": [],
+    "alt": "A 10 m ladder reaches 8 m up a vertical wall. How far is its foot from the wall on level ground?"
+  },
+  "pyth-questions-004-answer": {
+    "family": "right",
+    "base": "5 m",
+    "vertical": "12 m",
+    "hyp": "13 m",
+    "angle": "",
+    "context": "wire",
+    "highlight": "hyp",
+    "title": "A taut wire is a straight sloping side",
+    "steps": [
+      "wire² = 12² + 5² = 169",
+      "wire = 13 m"
+    ],
+    "alt": "A taut wire joins the top of a 12 m vertical pole to an anchor 5 m from its base on level ground. Find the wire’s length. 13 m: the wire is the hypotenuse, so √(12² + 5²) = 13. wire² = 12² + 5² = 169 wire = 13 m"
+  },
+  "pyth-questions-005-answer": {
+    "family": "right",
+    "base": "12 m",
+    "vertical": "16 m",
+    "hyp": "20 m",
+    "angle": "",
+    "context": "wire",
+    "highlight": "base",
+    "title": "Known sloping length → subtract",
+    "steps": [
+      "d² = 20² − 16² = 144",
+      "d = 12 m"
+    ],
+    "alt": "A taut 20 m wire runs from a 16 m vertical pole’s top to level ground. How far from the pole’s base is the anchor? 12 m: d = √(20² − 16²) = √144. d² = 20² − 16² = 144 d = 12 m"
+  },
+  "pyth-questions-006-answer": {
+    "family": "right",
+    "base": "15 m",
+    "vertical": "8 m",
+    "hyp": "17 m",
+    "angle": "",
+    "context": "screen",
+    "highlight": "hyp",
+    "title": "“Opposite corners” means a diagonal",
+    "steps": [
+      "A rectangle’s corner supplies the right angle.",
+      "d = √(8² + 15²) = 17 m"
+    ],
+    "alt": "A rectangular field is 8 m wide and 15 m long. Find the straight distance between opposite corners. 17 m: opposite corners are joined by the diagonal, √(8² + 15²). A rectangle’s corner supplies the right angle. d = √(8² + 15²) = 17 m"
+  },
+  "pyth-questions-007-answer": {
+    "family": "pythagoras",
+    "layout": "square",
+    "side": "7 m",
+    "diagonal": "9.9 m",
+    "title": "A square gives two equal legs",
+    "steps": [
+      "d² = 7² + 7² = 98",
+      "d = 7√2 ≈ 9.9 m"
+    ],
+    "alt": "A square courtyard has side 7 m. Find its diagonal to one decimal place. 9.9 m: d = √(7² + 7²) = 7√2 ≈ 9.8995. d² = 7² + 7² = 98 d = 7√2 ≈ 9.9 m"
+  },
+  "pyth-questions-008-answer": {
+    "family": "right",
+    "base": "24 cm",
+    "vertical": "7 cm",
+    "hyp": "25 cm",
+    "angle": "",
+    "context": "screen",
+    "highlight": "base",
+    "title": "The diagonal is the hypotenuse",
+    "steps": [
+      "w² = 25² − 7² = 576",
+      "w = 24 cm"
+    ],
+    "alt": "A rectangular sign has diagonal 25 cm and height 7 cm. Find its width. 24 cm: w = √(25² − 7²) = √576. w² = 25² − 7² = 576 w = 24 cm"
+  },
+  "pyth-questions-008-question": {
+    "family": "right",
+    "base": "w = ?",
+    "vertical": "7 cm",
+    "hyp": "25 cm",
+    "angle": "",
+    "context": "screen",
+    "highlight": "",
+    "title": "Sketch the problem",
+    "steps": [],
+    "alt": "A rectangular sign has diagonal 25 cm and height 7 cm. Find its width."
+  },
+  "pyth-questions-009-answer": {
+    "family": "right",
+    "base": "30 cm",
+    "vertical": "40 cm",
+    "hyp": "50 cm",
+    "angle": "",
+    "context": "screen",
+    "highlight": "hyp",
+    "title": "“Screen size” here means the diagonal",
+    "steps": [
+      "(3, 4, 5) × 10 = (30, 40, 50)",
+      "d = √(30² + 40²) = 50 cm"
+    ],
+    "alt": "A rectangular screen is 30 cm wide and 40 cm high. What is its corner-to-corner screen size? 50 cm: the diagonal follows the 3–4–5 pattern scaled by 10. (3, 4, 5) × 10 = (30, 40, 50) d = √(30² + 40²) = 50 cm"
+  },
+  "pyth-questions-010-answer": {
+    "family": "pythagoras",
+    "layout": "route",
+    "horizontal": "8 km",
+    "vertical": "6 km",
+    "diagonal": "10 km",
+    "directions": [
+      "E",
+      "N"
+    ],
+    "title": "“Straight line” asks for displacement",
+    "steps": [
+      "North and east form a right angle.",
+      "d = √(6² + 8²) = 10 km"
+    ],
+    "alt": "You walk 6 km north, then 8 km east. How far are you from your starting point in a straight line? 10 km: north and east are perpendicular, so √(6² + 8²) = 10. North and east form a right angle. d = √(6² + 8²) = 10 km"
+  },
+  "pyth-questions-011-answer": {
+    "family": "pythagoras",
+    "layout": "route",
+    "horizontal": "8 km",
+    "vertical": "6 km",
+    "diagonal": "10 km",
+    "directions": [
+      "E",
+      "N"
+    ],
+    "route_focus": true,
+    "title": "“Distance walked” follows the route",
+    "steps": [
+      "Add the journey: 6 + 8 = 14 km.",
+      "The straight shortcut is a different length."
+    ],
+    "alt": "You walk 6 km north, then 8 km east. Why is the distance you actually walked 14 km, not 10 km? Travel distance adds the route’s two legs: 6 + 8 = 14 km. Ten kilometres is the direct shortcut. Add the journey: 6 + 8 = 14 km. The straight shortcut is a different length."
+  },
+  "pyth-questions-012-answer": {
+    "family": "pythagoras",
+    "layout": "route",
+    "horizontal": "9 km",
+    "vertical": "12 km",
+    "diagonal": "15 km",
+    "directions": [
+      "W",
+      "N"
+    ],
+    "west": true,
+    "title": "Changing compass direction does not change it",
+    "steps": [
+      "West and north still meet at 90°.",
+      "d = √(9² + 12²) = 15 km"
+    ],
+    "alt": "A boat travels 9 km west, then 12 km north. Find its straight-line distance from the start. 15 km: west and north are perpendicular, and 9–12–15 is a scaled 3–4–5 triangle. West and north still meet at 90°. d = √(9² + 12²) = 15 km"
+  },
+  "pyth-questions-013-answer": {
+    "family": "pythagoras",
+    "layout": "coordinates",
+    "a": "A (1, 2)",
+    "b": "B (7, 10)",
+    "horizontal": "6",
+    "vertical": "8",
+    "diagonal": "10",
+    "title": "Coordinate differences become the legs",
+    "steps": [
+      "Δx = 7 − 1 = 6; Δy = 10 − 2 = 8",
+      "AB = √(6² + 8²) = 10 units"
+    ],
+    "alt": "On a square coordinate grid, A is (1, 2) and B is (7, 10). Find the straight-line distance AB. 10 units: horizontal change 6, vertical change 8; √(6² + 8²) = 10. Δx = 7 − 1 = 6; Δy = 10 − 2 = 8 AB = √(6² + 8²) = 10 units"
+  },
+  "pyth-questions-014-answer": {
+    "family": "pythagoras",
+    "layout": "coordinates",
+    "a": "P (−3, 1)",
+    "b": "Q (5, 7)",
+    "horizontal": "8",
+    "vertical": "6",
+    "diagonal": "10",
+    "title": "Subtract the negative coordinate carefully",
+    "steps": [
+      "Δx = 5 − (−3) = 8; Δy = 7 − 1 = 6",
+      "PQ = √(8² + 6²) = 10 units"
+    ],
+    "alt": "On a square coordinate grid, P is (−3, 1) and Q is (5, 7). Find PQ. 10 units: Δx = 5 − (−3) = 8 and Δy = 6; √(8² + 6²) = 10. Δx = 5 − (−3) = 8; Δy = 7 − 1 = 6 PQ = √(8² + 6²) = 10 units"
+  },
+  "pyth-questions-015-answer": {
+    "family": "right",
+    "base": "1.2 m",
+    "vertical": "0.9 m",
+    "hyp": "1.5 m",
+    "angle": "",
+    "context": "ramp",
+    "highlight": "hyp",
+    "title": "“Rise” and “horizontal run” are the legs",
+    "steps": [
+      "L² = 0.9² + 1.2² = 2.25",
+      "L = 1.5 m"
+    ],
+    "alt": "A straight ramp rises 0.9 m vertically over a horizontal run of 1.2 m. Find the ramp’s length. 1.5 m: the ramp is the hypotenuse, √(0.9² + 1.2²). L² = 0.9² + 1.2² = 2.25 L = 1.5 m"
+  },
+  "pyth-questions-016-answer": {
+    "family": "right",
+    "base": "4 m",
+    "vertical": "3 m",
+    "hyp": "5 m",
+    "angle": "",
+    "context": "ramp",
+    "highlight": "base",
+    "title": "Ramp length is not horizontal run",
+    "steps": [
+      "run² = 5² − 3² = 16",
+      "run = 4 m"
+    ],
+    "alt": "A straight ramp is 5 m long and rises 3 m vertically. Find its horizontal run. 4 m: run = √(5² − 3²). The 5 m ramp is the hypotenuse. run² = 5² − 3² = 16 run = 4 m"
+  },
+  "pyth-questions-016-question": {
+    "family": "right",
+    "base": "run = ?",
+    "vertical": "3 m",
+    "hyp": "5 m",
+    "angle": "",
+    "context": "ramp",
+    "highlight": "",
+    "title": "Sketch the problem",
+    "steps": [],
+    "alt": "A straight ramp is 5 m long and rises 3 m vertically. Find its horizontal run."
+  },
+  "pyth-questions-017-answer": {
+    "family": "right",
+    "base": "4 m",
+    "vertical": "3 m",
+    "hyp": "ramp",
+    "angle": "",
+    "context": "ramp",
+    "highlight": "hyp",
+    "title": "Translate the words before calculating",
+    "steps": [
+      "“Rise” is vertical; “run” is horizontal.",
+      "“Ramp length” is the sloping hypotenuse."
+    ],
+    "alt": "A ramp rises 3 m over a horizontal run of 4 m. In “find the length of the ramp”, which triangle side is requested? The sloping hypotenuse, not the vertical rise or horizontal run. “Rise” is vertical; “run” is horizontal. “Ramp length” is the sloping hypotenuse."
+  },
+  "pyth-questions-018-answer": {
+    "family": "pythagoras",
+    "layout": "roof",
+    "whole": "12 m",
+    "half": "6 m",
+    "leg": "10 m",
+    "height": "8 m",
+    "title": "Split the symmetric shape down the middle",
+    "steps": [
+      "Half the base: 12 ÷ 2 = 6 m.",
+      "h = √(10² − 6²) = 8 m"
+    ],
+    "alt": "An isosceles tent cross-section has equal sloping sides 10 m and base 12 m. Find its perpendicular height. 8 m: the height halves the base to 6 m, so h = √(10² − 6²). Half the base: 12 ÷ 2 = 6 m. h = √(10² − 6²) = 8 m"
+  },
+  "pyth-questions-019-answer": {
+    "family": "pythagoras",
+    "layout": "roof",
+    "whole": "10 cm",
+    "half": "5 cm",
+    "leg": "10 cm",
+    "height": "8.7 cm",
+    "title": "The altitude creates a right triangle",
+    "steps": [
+      "Half the base: 10 ÷ 2 = 5 cm.",
+      "h = √(10² − 5²) = √75 ≈ 8.7 cm"
+    ],
+    "alt": "Find the perpendicular height of an equilateral triangle of side 10 cm, to one decimal place. 8.7 cm: half the base is 5 cm; h = √(10² − 5²) = √75 ≈ 8.6603. Half the base: 10 ÷ 2 = 5 cm. h = √(10² − 5²) = √75 ≈ 8.7 cm"
+  },
+  "pyth-questions-020-answer": {
+    "family": "pythagoras",
+    "layout": "rhombus",
+    "title": "Use HALF of each diagonal",
+    "steps": [
+      "6 ÷ 2 = 3 cm; 8 ÷ 2 = 4 cm.",
+      "side = √(3² + 4²) = 5 cm"
+    ],
+    "alt": "A rhombus has diagonals 6 cm and 8 cm. They bisect each other at right angles. Find one side of the rhombus. 5 cm: use half-diagonals 3 cm and 4 cm as the legs; √(3² + 4²) = 5. 6 ÷ 2 = 3 cm; 8 ÷ 2 = 4 cm. side = √(3² + 4²) = 5 cm"
+  },
+  "pyth-questions-021-answer": {
+    "family": "pythagoras",
+    "layout": "roof",
+    "whole": "10 cm",
+    "half": "5 cm",
+    "leg": "13 cm",
+    "height": "12 cm",
+    "title": "Find the perpendicular height first",
+    "steps": [
+      "Half base = 5; h = √(13² − 5²) = 12.",
+      "Area = ½ × 10 × 12 = 60 cm²"
+    ],
+    "alt": "An isosceles triangle has equal sides 13 cm and base 10 cm. Find its area. 60 cm²: h = √(13² − 5²) = 12 cm; area = ½ × 10 × 12. Half base = 5; h = √(13² − 5²) = 12. Area = ½ × 10 × 12 = 60 cm²"
+  },
+  "pyth-questions-022-answer": {
+    "family": "pythagoras",
+    "layout": "cuboid",
+    "title": "Use Pythagoras twice for a box",
+    "steps": [
+      "Base diagonal = √(12² + 9²) = 15 cm.",
+      "Space diagonal = √(15² + 8²) = 17 cm."
+    ],
+    "alt": "Extension: a rectangular box measures 12 cm by 9 cm by 8 cm. Find the internal diagonal joining opposite corners through the box. 17 cm: base diagonal = 15 cm; space diagonal = √(15² + 8²) = 17. Base diagonal = √(12² + 9²) = 15 cm. Space diagonal = √(15² + 8²) = 17 cm."
+  },
+  "pyth-questions-023-answer": {
+    "family": "right",
+    "base": "6 m",
+    "vertical": "8 m",
+    "hyp": "10 m",
+    "angle": "",
+    "context": "path",
+    "highlight": "vertical",
+    "title": "“Shortest distance to a line” is perpendicular",
+    "steps": [
+      "Tree-to-bench is the 10 m hypotenuse.",
+      "Perpendicular distance = √(10² − 6²) = 8 m"
+    ],
+    "alt": "A tree is 10 m from a bench on a straight path. Its perpendicular foot on the path is 6 m from the bench. Find the shortest tree-to-path distance. 8 m: the shortest distance is perpendicular to the path, so √(10² − 6²) = 8. Tree-to-bench is the 10 m hypotenuse. Perpendicular distance = √(10² − 6²) = 8 m"
+  },
+  "pyth-questions-024-answer": {
+    "family": "pythagoras",
+    "layout": "rectangle-boundary",
+    "width": "8 m",
+    "height": "6 m",
+    "title": "“Around the boundary” means perimeter",
+    "steps": [
+      "Follow all four sides, not a diagonal.",
+      "Perimeter = 6 + 8 + 6 + 8 = 28 m"
+    ],
+    "alt": "A rectangular garden is 6 m by 8 m. How much fencing goes around its boundary? Decide whether Pythagoras is needed. 28 m: perimeter = 2(6 + 8). Pythagoras is unnecessary because no diagonal is requested. Follow all four sides, not a diagonal. Perimeter = 6 + 8 + 6 + 8 = 28 m"
+  },
+  "pyth-questions-025-answer": {
+    "family": "pythagoras",
+    "layout": "nonright",
+    "left": "10 cm",
+    "right": "?",
+    "base": "8 cm",
+    "angle": "60°",
+    "angle_vertex": "left",
+    "title": "An angle is given—but it is not 90°",
+    "steps": [
+      "Pythagoras needs a right triangle.",
+      "60° between the known sides does not qualify."
+    ],
+    "alt": "Two sides of a triangle are 8 cm and 10 cm, with 60° between them. Why can’t you use 8² + 10² to find the third side’s square? The included angle is 60°, not 90°. Those sides are not perpendicular legs. Pythagoras needs a right triangle. 60° between the known sides does not qualify."
+  },
+  "pyth-questions-026-answer": {
+    "family": "right",
+    "base": "",
+    "vertical": "opposite",
+    "hyp": "10 cm",
+    "angle": "35°",
+    "ratio": "sin",
+    "title": "One side + an angle points to trigonometry",
+    "steps": [
+      "sin 35° = opposite ÷ 10",
+      "Pythagoras alone needs another known side."
+    ],
+    "alt": "A right triangle has hypotenuse 10 cm and an acute angle of 35°. Which method directly finds the opposite side, and why? Trigonometry: sine uses an angle and the hypotenuse. Pythagoras needs two known side lengths. sin 35° = opposite ÷ 10 Pythagoras alone needs another known side."
+  },
+  "pyth-questions-027-answer": {
+    "family": "pythagoras",
+    "layout": "parallelogram",
+    "title": "A parallelogram is not necessarily a rectangle",
+    "steps": [
+      "The sides are not perpendicular here.",
+      "“Diagonal” alone does not justify Pythagoras."
+    ],
+    "alt": "A parallelogram has adjacent sides 6 cm and 8 cm and an included angle of 60°. Why can’t you assume its diagonal is 10 cm? A parallelogram need not have right angles. The 6–8–10 shortcut requires perpendicular 6 cm and 8 cm sides. The sides are not perpendicular here. “Diagonal” alone does not justify Pythagoras."
+  },
+  "pyth-questions-028-answer": {
+    "family": "pythagoras",
+    "layout": "nonright",
+    "left": "12 cm",
+    "right": "12 cm",
+    "base": "?",
+    "angle": "?",
+    "angle_vertex": "top",
+    "title": "Equal sides do not guarantee a right angle",
+    "steps": [
+      "Isosceles means two equal sides.",
+      "You still need 90° BETWEEN those sides."
+    ],
+    "alt": "An isosceles triangle has two 12 cm sides. What extra fact would justify using 12² + 12² to find its third side’s square? The angle between the two 12 cm sides must be 90°. Isosceles means two equal sides. You still need 90° BETWEEN those sides."
+  },
+  "pyth-questions-029-answer": {
+    "family": "right",
+    "base": "7 cm",
+    "vertical": "5 cm",
+    "hyp": "8.6 cm",
+    "angle": "",
+    "context": "screen",
+    "highlight": "hyp",
+    "title": "“Nearest tenth” means one decimal place",
+    "steps": [
+      "d = √(5² + 7²) = √74",
+      "√74 ≈ 8.6023 → 8.6 cm"
+    ],
+    "alt": "A rectangular board is 5 cm by 7 cm. Find its diagonal to the nearest tenth of a centimetre. 8.6 cm: d = √74 ≈ 8.6023, rounded only at the end. d = √(5² + 7²) = √74 √74 ≈ 8.6023 → 8.6 cm"
+  },
+  "pyth-questions-030-answer": {
+    "family": "right",
+    "base": "1.5 m",
+    "vertical": "2 m",
+    "hyp": "2.5 m",
+    "angle": "",
+    "context": "ladder",
+    "highlight": "vertical",
+    "title": "Mixed units: convert before squaring",
+    "steps": [
+      "250 cm = 2.5 m; h² = 2.5² − 1.5².",
+      "h = √4 = 2 m"
+    ],
+    "alt": "A 250 cm ladder leans against a vertical wall, with its foot 1.5 m away on level ground. Find its vertical reach in metres. 2 m: convert 250 cm to 2.5 m, then √(2.5² − 1.5²) = 2. 250 cm = 2.5 m; h² = 2.5² − 1.5². h = √4 = 2 m"
+  },
+  "pyth-questions-031-answer": {
+    "family": "right",
+    "base": "2.4 m",
+    "vertical": "1.8 m",
+    "hyp": "3 m",
+    "angle": "",
+    "context": "screen",
+    "highlight": "hyp",
+    "title": "“Corner-to-corner brace” means diagonal",
+    "steps": [
+      "(3, 4, 5) × 0.6 = (1.8, 2.4, 3)",
+      "brace = √(1.8² + 2.4²) = 3 m"
+    ],
+    "alt": "A rectangular gate is 2.4 m wide and 1.8 m high. Find the length of a straight brace from one corner to the opposite corner. 3 m: the brace is the diagonal; use 3–4–5 scaled by 0.6. (3, 4, 5) × 0.6 = (1.8, 2.4, 3) brace = √(1.8² + 2.4²) = 3 m"
+  },
+  "pyth-questions-032-answer": {
+    "family": "right",
+    "base": "12 m",
+    "vertical": "9 m",
+    "hyp": "15 m",
+    "angle": "",
+    "show90": true,
+    "title": "“Check it is square” can mean test 90°",
+    "steps": [
+      "9² + 12² = 81 + 144 = 225 = 15²",
+      "The 9 m and 12 m edges are perpendicular."
+    ],
+    "alt": "A builder measures a triangular layout: 9 m, 12 m and 15 m. Explain how this checks whether the 9 m and 12 m edges meet at 90°. 9² + 12² = 15². The converse of Pythagoras confirms a right angle between the shorter edges. 9² + 12² = 81 + 144 = 225 = 15² The 9 m and 12 m edges are perpendicular."
+  }
+}

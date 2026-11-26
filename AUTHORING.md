@@ -6,7 +6,7 @@ Create `sources/<slug>.json`, using the existing triangles source as an example.
 {
   "slug": "example-topic",
   "name": "Learning::Year group::Example topic",
-  "deck_id": 1732764502,
+  "deck_id": 1732764506,
   "description": "Audience, prerequisites and topic scope.",
   "cards": [
     {
@@ -44,6 +44,8 @@ The builder derives each Anki GUID from a permanent namespace, deck slug and car
 ## Diagrams
 
 Both `diagram` (question side) and `answer_diagram` (revealed answer only) are optional scene names from `DIAGRAMS` in `scripts/diagrams.py`. Each scene includes a family, labelled geometry, explanation steps and descriptive alternative text. Register a new scene, or add a renderer for a new geometry family. Do not put worked answers in question scenes, including their titles and alternative text.
+
+Scenes may also be registered in `visuals/*.json`, which the renderer loads automatically. The Pythagoras scenes use this format; their additional geometric constructions are implemented in `scripts/pythagoras_diagrams.py`.
 
 The builder appends answer images to the existing `Back` field. Keep the permanent model ID, five fields, template and note GUIDs unchanged when adding diagrams. CSV exports retain the original plain-text answers.
 

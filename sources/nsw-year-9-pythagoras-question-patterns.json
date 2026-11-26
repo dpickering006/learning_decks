@@ -1,0 +1,268 @@
+{
+  "slug": "nsw-year-9-pythagoras-question-patterns",
+  "name": "Learning::NSW Year 9::Pythagoras::Question patterns",
+  "deck_id": 1732764505,
+  "description": "32 cards on recognising and solving Pythagoras questions: ladders, wires, diagonals, routes, coordinates, ramps and hidden right triangles. Includes method-selection counterexamples and one labelled 3D extension. Every answer has an explanatory diagram. Attempt the words before revealing the model.",
+  "cards": [
+    {
+      "id": "pyth-questions-001",
+      "topic": "Question patterns",
+      "kind": "recall",
+      "front": "A ladder leans against a vertical wall on level ground. Which length represents the hypotenuse?",
+      "back": "The ladder’s length: the ladder is opposite the right angle between wall and ground.",
+      "answer_diagram": "pyth-questions-001-answer"
+    },
+    {
+      "id": "pyth-questions-002",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A 13 m ladder leans against a vertical wall. Its foot is 5 m from the wall on level ground. How high does it reach?",
+      "back": "12 m: h = √(13² − 5²) = √144.",
+      "answer_diagram": "pyth-questions-002-answer",
+      "diagram": "pyth-questions-002-question"
+    },
+    {
+      "id": "pyth-questions-003",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A 10 m ladder reaches 8 m up a vertical wall. How far is its foot from the wall on level ground?",
+      "back": "6 m: d = √(10² − 8²) = √36.",
+      "answer_diagram": "pyth-questions-003-answer",
+      "diagram": "pyth-questions-003-question"
+    },
+    {
+      "id": "pyth-questions-004",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A taut wire joins the top of a 12 m vertical pole to an anchor 5 m from its base on level ground. Find the wire’s length.",
+      "back": "13 m: the wire is the hypotenuse, so √(12² + 5²) = 13.",
+      "answer_diagram": "pyth-questions-004-answer"
+    },
+    {
+      "id": "pyth-questions-005",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A taut 20 m wire runs from a 16 m vertical pole’s top to level ground. How far from the pole’s base is the anchor?",
+      "back": "12 m: d = √(20² − 16²) = √144.",
+      "answer_diagram": "pyth-questions-005-answer"
+    },
+    {
+      "id": "pyth-questions-006",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A rectangular field is 8 m wide and 15 m long. Find the straight distance between opposite corners.",
+      "back": "17 m: opposite corners are joined by the diagonal, √(8² + 15²).",
+      "answer_diagram": "pyth-questions-006-answer"
+    },
+    {
+      "id": "pyth-questions-007",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A square courtyard has side 7 m. Find its diagonal to one decimal place.",
+      "back": "9.9 m: d = √(7² + 7²) = 7√2 ≈ 9.8995.",
+      "answer_diagram": "pyth-questions-007-answer"
+    },
+    {
+      "id": "pyth-questions-008",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A rectangular sign has diagonal 25 cm and height 7 cm. Find its width.",
+      "back": "24 cm: w = √(25² − 7²) = √576.",
+      "answer_diagram": "pyth-questions-008-answer",
+      "diagram": "pyth-questions-008-question"
+    },
+    {
+      "id": "pyth-questions-009",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A rectangular screen is 30 cm wide and 40 cm high. What is its corner-to-corner screen size?",
+      "back": "50 cm: the diagonal follows the 3–4–5 pattern scaled by 10.",
+      "answer_diagram": "pyth-questions-009-answer"
+    },
+    {
+      "id": "pyth-questions-010",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "You walk 6 km north, then 8 km east. How far are you from your starting point in a straight line?",
+      "back": "10 km: north and east are perpendicular, so √(6² + 8²) = 10.",
+      "answer_diagram": "pyth-questions-010-answer"
+    },
+    {
+      "id": "pyth-questions-011",
+      "topic": "Question patterns",
+      "kind": "why",
+      "front": "You walk 6 km north, then 8 km east. Why is the distance you actually walked 14 km, not 10 km?",
+      "back": "Travel distance adds the route’s two legs: 6 + 8 = 14 km. Ten kilometres is the direct shortcut.",
+      "answer_diagram": "pyth-questions-011-answer"
+    },
+    {
+      "id": "pyth-questions-012",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A boat travels 9 km west, then 12 km north. Find its straight-line distance from the start.",
+      "back": "15 km: west and north are perpendicular, and 9–12–15 is a scaled 3–4–5 triangle.",
+      "answer_diagram": "pyth-questions-012-answer"
+    },
+    {
+      "id": "pyth-questions-013",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "On a square coordinate grid, A is (1, 2) and B is (7, 10). Find the straight-line distance AB.",
+      "back": "10 units: horizontal change 6, vertical change 8; √(6² + 8²) = 10.",
+      "answer_diagram": "pyth-questions-013-answer"
+    },
+    {
+      "id": "pyth-questions-014",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "On a square coordinate grid, P is (−3, 1) and Q is (5, 7). Find PQ.",
+      "back": "10 units: Δx = 5 − (−3) = 8 and Δy = 6; √(8² + 6²) = 10.",
+      "answer_diagram": "pyth-questions-014-answer"
+    },
+    {
+      "id": "pyth-questions-015",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A straight ramp rises 0.9 m vertically over a horizontal run of 1.2 m. Find the ramp’s length.",
+      "back": "1.5 m: the ramp is the hypotenuse, √(0.9² + 1.2²).",
+      "answer_diagram": "pyth-questions-015-answer"
+    },
+    {
+      "id": "pyth-questions-016",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A straight ramp is 5 m long and rises 3 m vertically. Find its horizontal run.",
+      "back": "4 m: run = √(5² − 3²). The 5 m ramp is the hypotenuse.",
+      "answer_diagram": "pyth-questions-016-answer",
+      "diagram": "pyth-questions-016-question"
+    },
+    {
+      "id": "pyth-questions-017",
+      "topic": "Question patterns",
+      "kind": "recall",
+      "front": "A ramp rises 3 m over a horizontal run of 4 m. In “find the length of the ramp”, which triangle side is requested?",
+      "back": "The sloping hypotenuse, not the vertical rise or horizontal run.",
+      "answer_diagram": "pyth-questions-017-answer"
+    },
+    {
+      "id": "pyth-questions-018",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "An isosceles tent cross-section has equal sloping sides 10 m and base 12 m. Find its perpendicular height.",
+      "back": "8 m: the height halves the base to 6 m, so h = √(10² − 6²).",
+      "answer_diagram": "pyth-questions-018-answer"
+    },
+    {
+      "id": "pyth-questions-019",
+      "topic": "Hidden right triangles",
+      "kind": "apply",
+      "front": "Find the perpendicular height of an equilateral triangle of side 10 cm, to one decimal place.",
+      "back": "8.7 cm: half the base is 5 cm; h = √(10² − 5²) = √75 ≈ 8.6603.",
+      "answer_diagram": "pyth-questions-019-answer"
+    },
+    {
+      "id": "pyth-questions-020",
+      "topic": "Hidden right triangles",
+      "kind": "apply",
+      "front": "A rhombus has diagonals 6 cm and 8 cm. They bisect each other at right angles. Find one side of the rhombus.",
+      "back": "5 cm: use half-diagonals 3 cm and 4 cm as the legs; √(3² + 4²) = 5.",
+      "answer_diagram": "pyth-questions-020-answer"
+    },
+    {
+      "id": "pyth-questions-021",
+      "topic": "Hidden right triangles",
+      "kind": "apply",
+      "front": "An isosceles triangle has equal sides 13 cm and base 10 cm. Find its area.",
+      "back": "60 cm²: h = √(13² − 5²) = 12 cm; area = ½ × 10 × 12.",
+      "answer_diagram": "pyth-questions-021-answer"
+    },
+    {
+      "id": "pyth-questions-022",
+      "topic": "Extension",
+      "kind": "apply",
+      "front": "Extension: a rectangular box measures 12 cm by 9 cm by 8 cm. Find the internal diagonal joining opposite corners through the box.",
+      "back": "17 cm: base diagonal = 15 cm; space diagonal = √(15² + 8²) = 17.",
+      "answer_diagram": "pyth-questions-022-answer"
+    },
+    {
+      "id": "pyth-questions-023",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A tree is 10 m from a bench on a straight path. Its perpendicular foot on the path is 6 m from the bench. Find the shortest tree-to-path distance.",
+      "back": "8 m: the shortest distance is perpendicular to the path, so √(10² − 6²) = 8.",
+      "answer_diagram": "pyth-questions-023-answer"
+    },
+    {
+      "id": "pyth-questions-024",
+      "topic": "Choose the method",
+      "kind": "apply",
+      "front": "A rectangular garden is 6 m by 8 m. How much fencing goes around its boundary? Decide whether Pythagoras is needed.",
+      "back": "28 m: perimeter = 2(6 + 8). Pythagoras is unnecessary because no diagonal is requested.",
+      "answer_diagram": "pyth-questions-024-answer"
+    },
+    {
+      "id": "pyth-questions-025",
+      "topic": "Choose the method",
+      "kind": "why",
+      "front": "Two sides of a triangle are 8 cm and 10 cm, with 60° between them. Why can’t you use 8² + 10² to find the third side’s square?",
+      "back": "The included angle is 60°, not 90°. Those sides are not perpendicular legs.",
+      "answer_diagram": "pyth-questions-025-answer"
+    },
+    {
+      "id": "pyth-questions-026",
+      "topic": "Choose the method",
+      "kind": "recall",
+      "front": "A right triangle has hypotenuse 10 cm and an acute angle of 35°. Which method directly finds the opposite side, and why?",
+      "back": "Trigonometry: sine uses an angle and the hypotenuse. Pythagoras needs two known side lengths.",
+      "answer_diagram": "pyth-questions-026-answer"
+    },
+    {
+      "id": "pyth-questions-027",
+      "topic": "Choose the method",
+      "kind": "why",
+      "front": "A parallelogram has adjacent sides 6 cm and 8 cm and an included angle of 60°. Why can’t you assume its diagonal is 10 cm?",
+      "back": "A parallelogram need not have right angles. The 6–8–10 shortcut requires perpendicular 6 cm and 8 cm sides.",
+      "answer_diagram": "pyth-questions-027-answer"
+    },
+    {
+      "id": "pyth-questions-028",
+      "topic": "Choose the method",
+      "kind": "recall",
+      "front": "An isosceles triangle has two 12 cm sides. What extra fact would justify using 12² + 12² to find its third side’s square?",
+      "back": "The angle between the two 12 cm sides must be 90°.",
+      "answer_diagram": "pyth-questions-028-answer"
+    },
+    {
+      "id": "pyth-questions-029",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A rectangular board is 5 cm by 7 cm. Find its diagonal to the nearest tenth of a centimetre.",
+      "back": "8.6 cm: d = √74 ≈ 8.6023, rounded only at the end.",
+      "answer_diagram": "pyth-questions-029-answer"
+    },
+    {
+      "id": "pyth-questions-030",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A 250 cm ladder leans against a vertical wall, with its foot 1.5 m away on level ground. Find its vertical reach in metres.",
+      "back": "2 m: convert 250 cm to 2.5 m, then √(2.5² − 1.5²) = 2.",
+      "answer_diagram": "pyth-questions-030-answer"
+    },
+    {
+      "id": "pyth-questions-031",
+      "topic": "Question patterns",
+      "kind": "apply",
+      "front": "A rectangular gate is 2.4 m wide and 1.8 m high. Find the length of a straight brace from one corner to the opposite corner.",
+      "back": "3 m: the brace is the diagonal; use 3–4–5 scaled by 0.6.",
+      "answer_diagram": "pyth-questions-031-answer"
+    },
+    {
+      "id": "pyth-questions-032",
+      "topic": "Recognise the converse",
+      "kind": "why",
+      "front": "A builder measures a triangular layout: 9 m, 12 m and 15 m. Explain how this checks whether the 9 m and 12 m edges meet at 90°.",
+      "back": "9² + 12² = 15². The converse of Pythagoras confirms a right angle between the shorter edges.",
+      "answer_diagram": "pyth-questions-032-answer"
+    }
+  ]
+}

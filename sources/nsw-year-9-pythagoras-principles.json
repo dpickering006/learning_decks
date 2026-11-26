@@ -1,0 +1,233 @@
+{
+  "slug": "nsw-year-9-pythagoras-principles",
+  "name": "Learning::NSW Year 9::Pythagoras::Principles",
+  "deck_id": 1732764502,
+  "description": "28 cards on right triangles, choosing legs and hypotenuse, square areas, rearranging, common Pythagorean triples, scaling, units and exact lengths. Every answer has an explanatory diagram. Year 9 practice and foundation review; not a complete course.",
+  "cards": [
+    {
+      "id": "pyth-principles-001",
+      "topic": "Pythagoras",
+      "kind": "recall",
+      "front": "State Pythagoras’ theorem for a right triangle with legs a and b and hypotenuse c.",
+      "back": "a² + b² = c². The hypotenuse c is opposite the right angle.",
+      "answer_diagram": "pyth-principles-001-answer"
+    },
+    {
+      "id": "pyth-principles-002",
+      "topic": "Pythagoras",
+      "kind": "recall",
+      "front": "How do you identify the hypotenuse, even when a right triangle is drawn upside down?",
+      "back": "Find the right angle; the side opposite it is the hypotenuse and the longest side.",
+      "answer_diagram": "pyth-principles-002-answer"
+    },
+    {
+      "id": "pyth-principles-003",
+      "topic": "Pythagoras",
+      "kind": "why",
+      "front": "In a² + b² = c², why can a and b swap names but c cannot swap with a leg?",
+      "back": "Addition lets the legs swap; c must remain the hypotenuse opposite the right angle.",
+      "answer_diagram": "pyth-principles-003-answer"
+    },
+    {
+      "id": "pyth-principles-004",
+      "topic": "Pythagoras",
+      "kind": "why",
+      "front": "A sketch looks right-angled but has no angle marking or measurements. Why is that insufficient for Pythagoras?",
+      "back": "A sketch is not proof. You need a stated, marked or established right angle.",
+      "answer_diagram": "pyth-principles-004-answer"
+    },
+    {
+      "id": "pyth-principles-005",
+      "topic": "Pythagoras",
+      "kind": "apply",
+      "front": "Triangle ABC is right-angled at A. Which side must be the hypotenuse?",
+      "back": "BC, because it is opposite the right angle at A.",
+      "answer_diagram": "pyth-principles-005-answer",
+      "diagram": "pyth-principles-005-question"
+    },
+    {
+      "id": "pyth-principles-006",
+      "topic": "Pythagoras",
+      "kind": "why",
+      "front": "What does a² + b² = c² mean if you draw a square on each side of a right triangle?",
+      "back": "The areas of the two squares on the legs add to the area of the square on the hypotenuse.",
+      "answer_diagram": "pyth-principles-006-answer"
+    },
+    {
+      "id": "pyth-principles-007",
+      "topic": "Pythagoras",
+      "kind": "recall",
+      "front": "What formula finds a missing hypotenuse from known legs a and b?",
+      "back": "c = √(a² + b²): square, add, then take the square root.",
+      "answer_diagram": "pyth-principles-007-answer"
+    },
+    {
+      "id": "pyth-principles-008",
+      "topic": "Pythagoras",
+      "kind": "recall",
+      "front": "What formula finds missing leg b from hypotenuse c and other leg a?",
+      "back": "b = √(c² − a²): square, subtract, then take the square root.",
+      "answer_diagram": "pyth-principles-008-answer"
+    },
+    {
+      "id": "pyth-principles-009",
+      "topic": "Pythagoras",
+      "kind": "why",
+      "front": "A right triangle has hypotenuse 17 cm and a leg 15 cm. Why subtract 15² from 17²?",
+      "back": "The hypotenuse square equals both leg squares combined; subtracting one leaves the other.",
+      "answer_diagram": "pyth-principles-009-answer"
+    },
+    {
+      "id": "pyth-principles-010",
+      "topic": "Pythagoras",
+      "kind": "apply",
+      "front": "You find x² = 81 when calculating a triangle’s side. What is x?",
+      "back": "9, because √81 = 9 and a side length is positive.",
+      "answer_diagram": "pyth-principles-010-answer"
+    },
+    {
+      "id": "pyth-principles-011",
+      "topic": "Pythagoras",
+      "kind": "apply",
+      "front": "A right triangle’s legs are 300 cm and 4 m. Find its hypotenuse in metres.",
+      "back": "5 m. First convert 300 cm to 3 m; then √(3² + 4²) = 5.",
+      "answer_diagram": "pyth-principles-011-answer"
+    },
+    {
+      "id": "pyth-principles-012",
+      "topic": "Pythagoras",
+      "kind": "apply",
+      "front": "If c² = 25 cm², what is the hypotenuse length and its unit?",
+      "back": "c = 5 cm. Taking the square root converts squared centimetres back to centimetres.",
+      "answer_diagram": "pyth-principles-012-answer"
+    },
+    {
+      "id": "pyth-principles-013",
+      "topic": "Pythagoras",
+      "kind": "recall",
+      "front": "What is a Pythagorean triple?",
+      "back": "Three positive integers whose two smaller squares sum to the largest square.",
+      "answer_diagram": "pyth-principles-013-answer"
+    },
+    {
+      "id": "pyth-principles-014",
+      "topic": "Common triples",
+      "kind": "recall",
+      "front": "A right triangle has legs 3 and 4. Complete the common triple by giving its hypotenuse.",
+      "back": "5: 3² + 4² = 9 + 16 = 25 = 5².",
+      "answer_diagram": "pyth-principles-014-answer"
+    },
+    {
+      "id": "pyth-principles-015",
+      "topic": "Common triples",
+      "kind": "recall",
+      "front": "A right triangle has legs 5 and 12. Complete the common triple by giving its hypotenuse.",
+      "back": "13: 5² + 12² = 25 + 144 = 169 = 13².",
+      "answer_diagram": "pyth-principles-015-answer"
+    },
+    {
+      "id": "pyth-principles-016",
+      "topic": "Common triples",
+      "kind": "recall",
+      "front": "A right triangle has legs 8 and 15. Complete the common triple by giving its hypotenuse.",
+      "back": "17: 8² + 15² = 64 + 225 = 289 = 17².",
+      "answer_diagram": "pyth-principles-016-answer"
+    },
+    {
+      "id": "pyth-principles-017",
+      "topic": "Common triples",
+      "kind": "recall",
+      "front": "A right triangle has legs 7 and 24. Complete the common triple by giving its hypotenuse.",
+      "back": "25: 7² + 24² = 49 + 576 = 625 = 25².",
+      "answer_diagram": "pyth-principles-017-answer"
+    },
+    {
+      "id": "pyth-principles-018",
+      "topic": "Common triples",
+      "kind": "recall",
+      "front": "A right triangle has legs 9 and 40. Complete the common triple by giving its hypotenuse.",
+      "back": "41: 9² + 40² = 81 + 1600 = 1681 = 41².",
+      "answer_diagram": "pyth-principles-018-answer"
+    },
+    {
+      "id": "pyth-principles-019",
+      "topic": "Scaled triples",
+      "kind": "apply",
+      "front": "A right triangle has legs 6 cm and 8 cm. Use the 3–4–5 pattern to find its hypotenuse.",
+      "back": "10 cm: multiply every side of 3–4–5 by 2.",
+      "answer_diagram": "pyth-principles-019-answer"
+    },
+    {
+      "id": "pyth-principles-020",
+      "topic": "Scaled triples",
+      "kind": "apply",
+      "front": "A right triangle has legs 9 cm and 12 cm. Use the 3–4–5 pattern to find its hypotenuse.",
+      "back": "15 cm: multiply every side of 3–4–5 by 3.",
+      "answer_diagram": "pyth-principles-020-answer"
+    },
+    {
+      "id": "pyth-principles-021",
+      "topic": "Scaled triples",
+      "kind": "apply",
+      "front": "A right triangle has legs 12 cm and 16 cm. Use the 3–4–5 pattern to find its hypotenuse.",
+      "back": "20 cm: multiply every side of 3–4–5 by 4.",
+      "answer_diagram": "pyth-principles-021-answer"
+    },
+    {
+      "id": "pyth-principles-022",
+      "topic": "Scaled triples",
+      "kind": "apply",
+      "front": "A right triangle has legs 0.6 m and 0.8 m. Use a familiar side ratio to find its hypotenuse.",
+      "back": "1 m: these are 3–4–5 lengths multiplied by 0.2.",
+      "answer_diagram": "pyth-principles-022-answer"
+    },
+    {
+      "id": "pyth-principles-023",
+      "topic": "Scaled triples",
+      "kind": "why",
+      "front": "Why does multiplying every side of a Pythagorean triple by the same positive number preserve the right angle?",
+      "back": "Each square gains the same factor k², so a² + b² = c² remains true.",
+      "answer_diagram": "pyth-principles-023-answer"
+    },
+    {
+      "id": "pyth-principles-024",
+      "topic": "Checking triangles",
+      "kind": "why",
+      "front": "How can side lengths 9, 12 and 15 establish that a triangle is right-angled?",
+      "back": "9² + 12² = 15²; by the converse of Pythagoras, the angle opposite 15 is 90°.",
+      "answer_diagram": "pyth-principles-024-answer"
+    },
+    {
+      "id": "pyth-principles-025",
+      "topic": "Checking triangles",
+      "kind": "why",
+      "front": "Why are 4, 5 and 6 not a Pythagorean triple?",
+      "back": "4² + 5² = 41, but 6² = 36. The squares do not match.",
+      "answer_diagram": "pyth-principles-025-answer"
+    },
+    {
+      "id": "pyth-principles-026",
+      "topic": "Exact lengths",
+      "kind": "apply",
+      "front": "A right triangle has legs 5 cm and 5 cm. Give its hypotenuse exactly, without a decimal approximation.",
+      "back": "5√2 cm: √(5² + 5²) = √50 = 5√2.",
+      "answer_diagram": "pyth-principles-026-answer"
+    },
+    {
+      "id": "pyth-principles-027",
+      "topic": "Exact lengths",
+      "kind": "recall",
+      "front": "A right isosceles triangle has equal legs x. What is its hypotenuse in terms of x?",
+      "back": "x√2, because c² = x² + x² = 2x².",
+      "answer_diagram": "pyth-principles-027-answer"
+    },
+    {
+      "id": "pyth-principles-028",
+      "topic": "Accuracy",
+      "kind": "apply",
+      "front": "A right triangle has legs 8 cm and 11 cm. Find the hypotenuse to one decimal place.",
+      "back": "13.6 cm: keep √185 unrounded until the final answer.",
+      "answer_diagram": "pyth-principles-028-answer"
+    }
+  ]
+}

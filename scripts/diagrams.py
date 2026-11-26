@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import hashlib
 import io
+import json
 import math
 from functools import lru_cache
 from pathlib import Path
@@ -19,6 +20,12 @@ INK, MUTED = "#183247", "#53687a"
 TEAL, ORANGE, BLUE = "#007c78", "#b14c16", "#355fbd"
 PALE, WARM = "#e4f5f1", "#fff0df"
 DIAGRAMS = {}
+
+for visual_file in sorted((FONT.parents[2] / "visuals").glob("*.json")):
+    entries = json.loads(visual_file.read_text())
+    if DIAGRAMS.keys() & entries.keys():
+        raise ValueError(f"Duplicate diagram keys in {visual_file}")
+    DIAGRAMS.update(entries)
 
 
 @lru_cache(maxsize=None)
@@ -344,6 +351,18 @@ def right(s, v):
         s.d.rectangle((670,130,700,455),fill="#dce6ed")
         s.line([(90,455),(755,455)],MUTED,5)
         s.text((742,150),"wall",28,MUTED)
+    if v.get("context")=="wire":
+        s.d.rectangle((670,135,688,455),fill="#dce6ed")
+        s.line([(90,455),(755,455)],MUTED,5)
+        s.text((744,150),"pole",28,MUTED)
+    if v.get("context")=="ramp":
+        s.line([(90,455),(810,455)],MUTED,4)
+        s.line([(670,165),(810,165)],MUTED,5)
+    if v.get("context")=="path":
+        s.line([(75,455),(825,455)],MUTED,12)
+        s.text((770,495),"path",28,MUTED)
+        s.text((140,405),"bench",28,MUTED)
+        s.text((737,135),"tree",28,MUTED)
     s.triangle([a,b,c])
     colors={"base":INK,"vertical":INK,"hyp":INK}
     if v.get("role_colors"):
@@ -446,6 +465,9 @@ def draw_diagram(kind: str, directory: Path) -> Path:
         {"triangle":triangle,"area":area,"right":right,"similar":similar}[family](s,v)
     elif family=="squares":
         scaled_squares(s,v)
+    elif family=="pythagoras":
+        from pythagoras_diagrams import draw_pythagoras
+        draw_pythagoras(s,v)
     elif family=="budget":
         s.text((450,175),"Triangle angle total: 180°",34)
         s.d.rounded_rectangle((90,255,755,340),radius=8,fill="#eef3f8")

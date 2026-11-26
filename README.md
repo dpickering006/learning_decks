@@ -7,8 +7,10 @@ Short Anki decks for recall, explanation and applying ideas. Attempt each questi
 | Deck | Contents | Downloads |
 | --- | --- | --- |
 | NSW Year 9 — Triangles | 40 cards, 20 question diagrams and 40 answer diagrams: angles, area, Pythagoras, similarity, right-angle trigonometry | [Anki deck (.apkg)](https://github.com/dpickering006/learning_decks/releases/latest/download/nsw-year-9-triangles.apkg) · [Plain CSV](https://github.com/dpickering006/learning_decks/releases/latest/download/nsw-year-9-triangles.csv) |
+| NSW Year 9 — Pythagoras: Principles | 28 cards with worked diagrams: theorem, rearranging, common triples, scaling, units and exact lengths | [Anki deck (.apkg)](https://github.com/dpickering006/learning_decks/releases/latest/download/nsw-year-9-pythagoras-principles.apkg) · [Plain CSV](https://github.com/dpickering006/learning_decks/releases/latest/download/nsw-year-9-pythagoras-principles.csv) |
+| NSW Year 9 — Pythagoras: Question patterns | 32 cards with worked diagrams: recognise wording, choose the method and solve practical problems | [Anki deck (.apkg)](https://github.com/dpickering006/learning_decks/releases/latest/download/nsw-year-9-pythagoras-question-patterns.apkg) · [Plain CSV](https://github.com/dpickering006/learning_decks/releases/latest/download/nsw-year-9-pythagoras-question-patterns.csv) |
 
-Every card now has a worked visual explanation on the answer side. Twenty cards also have a question diagram, with the solution hidden until you reveal the answer. Re-import the updated `.apkg` to add these explanations to your existing cards.
+Every card has a worked visual explanation on the answer side. Selected cards also have a question diagram, with the solution hidden until you reveal the answer. Re-import an updated `.apkg` to receive additions and corrections to existing cards.
 
 **Bookmark [the latest downloads](https://github.com/dpickering006/learning_decks/releases/latest).** Every publication includes all available decks. The links above always retrieve the newest successfully published versions.
 
@@ -19,8 +21,8 @@ Every card now has a worked visual explanation on the answer side. Twenty cards 
    - **AnkiMobile (iPhone/iPad):** open the downloaded file in Files or Safari's downloads, then use Share → AnkiMobile / Open in Anki.
    - **AnkiDroid (Android):** open the downloaded file with AnkiDroid, or choose Import from AnkiDroid's menu.
    - **Anki desktop:** choose File → Import and select the file.
-3. Open **Learning → NSW Year 9 → Triangles** and start studying. Use paper for calculations. Use degree mode for the calculator questions.
-4. Explain your answer before revealing it. If you could only recognise the answer after seeing it, mark it **Again**. Start with a manageable number of new cards, for example 5–10 per day; deck options control this. Anki may initially show only part of the 40-card deck because of its daily limit.
+3. Open **Learning → NSW Year 9** and select **Triangles**, or **Pythagoras → Principles / Question patterns**. Use paper for calculations. Use degree mode for trigonometry questions.
+4. Explain your answer before revealing it. If you could only recognise the answer after seeing it, mark it **Again**. Start with a manageable number of new cards, for example 5–10 per day; deck options control this. Anki may initially show only part of a deck because of its daily limit.
 
 These instructions are for the Anki family of apps: Anki, AnkiMobile and AnkiDroid. Similarly named flashcard apps can have different import formats.
 
@@ -56,6 +58,14 @@ This is a Year 9 practice deck, combining earlier geometry skills with introduct
 | Right-angle trigonometry | 9 |
 
 The questions and diagrams are original. Curriculum context: [NESA Mathematics K–10 (2022) course structure](https://curriculum.nsw.edu.au/learning-areas/mathematics/mathematics-k-10-2022/overview/course) and [NSW Mathematics 7–10 teaching units](https://education.nsw.gov.au/teaching-and-learning/curriculum/mathematics/planning-programming-and-assessing-mathematics-7-10/mathematics-7-10-units).
+
+## Scope of the Pythagoras decks
+
+Start with **Principles**, then practise translating words into triangles in **Question patterns**. The principles include 3–4–5, 5–12–13, 8–15–17, 7–24–25 and 9–40–41 triples, scaled versions, the 45°–45°–90° pattern, the converse, units and rounding.
+
+The question deck covers ladders, taut wires, rectangle and square diagonals, compass journeys, coordinates, ramps, symmetry and perpendicular distance. Contrasting examples distinguish route length from straight-line distance, perimeter from diagonals, and Pythagoras from trigonometry. One clearly labelled extension uses two right triangles inside a rectangular box. Worked diagrams appear after the answer is revealed so the learner first practises recognising the geometry from the wording.
+
+All questions and drawings are original. Scope was checked against the [NSW Pythagoras teaching resources](https://education.nsw.gov.au/teaching-and-learning/curriculum/mathematics/mathematics-curriculum-resources-k-12/mathematics-7-10-resources/pythagoras-theorem) and [NESA mathematical glossary](https://curriculum.nsw.edu.au/learning-areas/mathematics/mathematics-k-10-2022/glossary). These are practice and foundation-review decks, not a complete syllabus.
 
 ## Add or change decks
 
