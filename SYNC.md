@@ -26,9 +26,9 @@ This is a custom updater, not a built-in AnkiMobile GitHub subscription.
    Let image syncing finish. Future published updates follow the same route;
    there is no need to download another `.apkg` manually.
 
-The initial connection downloads your existing collection from AnkiWeb. It will
-not upload an empty collection or initialise an empty remote account. If your
-account has no cards, sync your phone first and retry.
+Normal setup downloads your existing collection from AnkiWeb. For a brand-new
+learner with no cards yet, the explicit `--new-account` option described below
+can send the selected decks straight to the empty account.
 
 ## What it preserves
 
@@ -67,11 +67,11 @@ deck slugs after `--decks` for a larger list. New profiles require an explicit
 selection; they never automatically receive every current or future deck.
 Use `--decks all` only when that is intentional.
 
-After the learner has created their AnkiWeb account and synced their initial
-cards from their own phone, connect the profile once:
+After the learner has created their AnkiWeb account, connect the profile once.
+For a brand-new account with no cards yet, use:
 
 ```sh
-.venv/bin/python scripts/sync_decks.py setup --account anna
+.venv/bin/python scripts/sync_decks.py setup --account anna --new-account
 cp deploy/learning-decks-sync@.service deploy/learning-decks-sync@.timer \
   ~/.config/systemd/user/
 systemctl --user daemon-reload
@@ -80,9 +80,17 @@ systemctl --user enable --now learning-decks-sync@anna.timer
 
 Use that learner's AnkiWeb credentials at the prompts. Reusing an account already
 connected to another profile is rejected. Their private state is stored in
-`~/.local/share/learning-decks-sync/accounts/anna/`. An account that is still empty
-needs the initial setup described above; the updater never selects a full upload
-to initialise a remote account automatically.
+`~/.local/share/learning-decks-sync/accounts/anna/`. The new-account option seeds
+an empty account with only its selected decks. It prefers incremental sync and
+allows a one-time initial upload only when Anki reports the server is empty.
+If the account already contains cards, those are downloaded and preserved instead.
+The regular background updater still refuses full-sync overwrite decisions.
+
+The learner then signs into that account in AnkiMobile and taps **Sync** to
+receive the cards and images; no initial `.apkg` import is needed. For an
+existing learner, first sync their phone and omit `--new-account`. An optional
+`--email` argument can prefill the account email; never pass a password as an
+argument or put personal account details in this public repository.
 
 To change the list, rerun `configure --account anna --decks ...`. The new list is
 processed on the next scheduled run, even if no new GitHub release has appeared.
@@ -150,6 +158,7 @@ Run `python scripts/verify_sync.py` after installing the test requirements. It
 starts Anki's own sync server on a temporary localhost port with two test accounts,
 then checks an earlier deck → phone review → updater import → phone sync cycle.
 It verifies note identity, scheduling, review history, media, backups and refusal
-to choose a full-sync overwrite. It also verifies selected-deck delivery,
+to choose a full-sync overwrite during regular operation. It also verifies selected-deck delivery,
 account isolation, subscription changes within the same release, and retention
-of previously imported or unrelated cards. It never connects to a real AnkiWeb account.
+of previously imported or unrelated cards, plus explicit setup of a new empty
+account without an initial phone import. It never connects to a real AnkiWeb account.

@@ -76,8 +76,9 @@ def incremental_sync(collection: Collection, auth: SyncAuth, state: Path) -> Non
     wait_for_media(collection, auth)
 
 
-def initialize(state: Path, email: str, password: str, endpoint: str | None = None) -> None:
-    """One-time bootstrap: download the existing account, never upload it."""
+def initialize(state: Path, email: str, password: str, endpoint: str | None = None,
+               initial_packages: list[Path] | None = None) -> None:
+    """Download an existing account, or explicitly seed a verified empty one."""
     if (state / "ready").exists():
         raise SetupRequired("Already configured. Use run or status; setup will not replace an existing collection.")
     collection = Collection(str(state / "collection.anki2"))
@@ -89,13 +90,37 @@ def initialize(state: Path, email: str, password: str, endpoint: str | None = No
         result = collection.sync_collection(auth, sync_media=False)
         if result.new_endpoint:
             auth.endpoint = result.new_endpoint
-        if result.required not in (result.FULL_DOWNLOAD, result.FULL_SYNC):
-            raise SetupRequired("First tap Sync on your iPhone to put your existing cards in this AnkiWeb account, then retry setup.")
-        collection.close_for_full_sync()
-        collection.full_upload_or_download(auth=auth, server_usn=result.server_media_usn, upload=False)
-        collection.reopen(after_full_sync=True)
+        if result.required in (result.FULL_DOWNLOAD, result.FULL_SYNC):
+            collection.close_for_full_sync()
+            collection.full_upload_or_download(auth=auth, server_usn=result.server_media_usn, upload=False)
+            collection.reopen(after_full_sync=True)
+        elif result.required == result.FULL_UPLOAD:
+            if not initial_packages:
+                raise SetupRequired("First sync your existing phone cards, or explicitly use --new-account for a new empty account.")
+        elif result.required != result.NO_CHANGES:
+            raise SetupRequired("The account needs a sync decision. Nothing was uploaded.")
+
         if not collection.card_count():
-            raise SetupRequired("This AnkiWeb account contains no cards. Sync your iPhone first; nothing was uploaded.")
+            if not initial_packages:
+                raise SetupRequired("This AnkiWeb account contains no cards. Sync your phone first, or use --new-account for a new account.")
+            selected = subscriptions(state)
+            if selected is None or any(path.stem not in selected for path in initial_packages):
+                raise ValueError("A new account needs an explicit list of selected decks")
+            for path in initial_packages:
+                collection.import_anki_package(ImportAnkiPackageRequest(
+                    package_path=str(path.resolve()),
+                    options=ImportAnkiPackageOptions(with_scheduling=False, with_deck_configs=False)))
+            # Prefer incremental sync. If the empty server needs initialisation,
+            # recheck immediately before the explicitly requested initial upload.
+            result = collection.sync_collection(auth, sync_media=False)
+            if result.new_endpoint:
+                auth.endpoint = result.new_endpoint
+            if result.required == result.FULL_UPLOAD:
+                collection.close_for_full_sync()
+                collection.full_upload_or_download(auth=auth, server_usn=result.server_media_usn, upload=True)
+                collection.reopen(after_full_sync=True)
+            elif result.required != result.NO_CHANGES:
+                raise SetupRequired("The account changed during setup. No full upload was performed; inspect before retrying.")
         save_auth(state, auth)
         private_write(state / "account.txt", (email.strip().casefold() + "\n").encode())
         private_write(state / "ready", b"configured\n")
@@ -249,6 +274,8 @@ def main() -> None:
     parser.add_argument("--state", type=Path, default=DEFAULT_STATE)
     parser.add_argument("--account", help="Separate account label, e.g. anna; omitted uses the original account")
     parser.add_argument("--decks", nargs="+", help="Published deck slugs, or all; used with configure")
+    parser.add_argument("--email", help="Email for setup; passwords are always entered at a hidden prompt")
+    parser.add_argument("--new-account", action="store_true", help="During setup, seed a new empty account with its selected decks")
     args = parser.parse_args()
     os.umask(0o077)
     root = args.state.expanduser().resolve()
@@ -257,6 +284,10 @@ def main() -> None:
         parser.error("configure requires --decks")
     if args.decks and args.command != "configure":
         parser.error("--decks is only used with configure")
+    if (args.email or args.new_account) and args.command != "setup":
+        parser.error("--email and --new-account are only used with setup")
+    if args.new_account and not args.account:
+        parser.error("--new-account requires a separate named --account")
     with locked(state):
         if args.command in ("configure", "list-decks"):
             release = read_json(f"https://api.github.com/repos/{REPOSITORY}/releases/latest")
@@ -268,16 +299,31 @@ def main() -> None:
                 for deck in catalogue:
                     print(f"{deck['slug']}: {deck['name']}")
         elif args.command == "setup":
-            subscriptions(state)  # Fail before asking for credentials if unconfigured.
-            print("First sync your existing cards from AnkiMobile to AnkiWeb.")
+            chosen = subscriptions(state)  # Fail before credentials if unconfigured.
+            if args.new_account and chosen is None:
+                raise SetupRequired("Choose specific decks before setting up a new account.")
+            if (state / "ready").exists():
+                raise SetupRequired("Already connected. Use run or status; no new sign-in is needed.")
+            if args.new_account:
+                print("New account setup: selected decks will be sent only if Anki reports the account is empty.")
+            else:
+                print("First sync your existing cards from AnkiMobile to AnkiWeb.")
             print("Use the same AnkiWeb account here. Your password will not be saved.")
-            email = input("AnkiWeb email: ").strip()
+            email = (args.email or input("AnkiWeb email: ")).strip()
+            if args.email:
+                print("Connecting AnkiWeb account: " + email)
             other_accounts = [root / "account.txt", *root.glob("accounts/*/account.txt")]
             if any(path.parent != state and path.exists() and path.read_text().strip() == email.casefold()
                    for path in other_accounts):
                 raise SetupRequired("That AnkiWeb account is already connected under another profile. Use a separate account.")
             password = getpass.getpass("AnkiWeb password: ")
-            initialize(state, email, password)
+            if args.new_account:
+                release = read_json(f"https://api.github.com/repos/{REPOSITORY}/releases/latest")
+                with tempfile.TemporaryDirectory(prefix="initial-", dir=state) as temporary:
+                    packages = fetch_packages(release, Path(temporary), chosen)
+                    initialize(state, email, password, initial_packages=packages)
+            else:
+                initialize(state, email, password)
             del password
             print("Account connected; fetching the latest deck release.")
             run(state)

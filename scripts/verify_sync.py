@@ -33,6 +33,7 @@ def main():
         env = {k: v for k, v in os.environ.items() if not k.startswith("SYNC_")}
         env.update(SYNC_USER1="test-user:test-password", SYNC_BASE=str(root / "server"),
                    SYNC_USER2="anna-test:test-password",
+                   SYNC_USER3="fresh-test:test-password",
                    SYNC_HOST="127.0.0.1", SYNC_PORT=str(port))
         with (root / "server.log").open("w") as log:
             server = subprocess.Popen([sys.executable, "-m", "anki.syncserver"], env=env,
@@ -95,6 +96,7 @@ def main():
                 assert list((state / "backups").glob("*.colpkg")), "No backup created"
 
                 verify_account_routing(root, state, endpoint, data, current_package, phone, auth)
+                verify_empty_account(root, endpoint, data, current_package)
 
                 # A schema conflict must stop rather than select an overwrite.
                 updater = Collection(str(state / "collection.anki2"))
@@ -115,6 +117,37 @@ def main():
                     phone.close()
                 server.terminate()
                 server.wait(timeout=15)
+
+
+def verify_empty_account(root, endpoint, data, package):
+    state = account_state(root / "new-updater", "fresh")
+    state.mkdir(parents=True, mode=0o700)
+    (state / "subscriptions.json").write_text(json.dumps({"decks": [data["slug"]]}))
+    try:
+        initialize(state, "fresh-test", "test-password", endpoint)
+    except SetupRequired:
+        pass
+    else:
+        raise AssertionError("Ordinary setup unexpectedly uploaded to a new account")
+    assert not (state / "ready").exists()
+    initialize(state, "fresh-test", "test-password", endpoint, initial_packages=[package])
+    phone = Collection(str(root / "fresh-phone.anki2"))
+    try:
+        auth = phone.sync_login("fresh-test", "test-password", endpoint)
+        result = phone.sync_collection(auth, sync_media=False)
+        assert result.required in (result.FULL_DOWNLOAD, result.FULL_SYNC)
+        phone.close_for_full_sync()
+        phone.full_upload_or_download(auth=auth, server_usn=result.server_media_usn, upload=False)
+        phone.reopen(after_full_sync=True)
+        wait_for_media(phone, auth)
+        assert phone.card_count() == len(data["cards"])
+        assert not phone.db.all("select * from revlog")
+        for cid in phone.find_cards(""):
+            for image in re.findall(r'<img src="([^"]+)"', phone.get_card(cid).answer()):
+                assert (Path(phone.media.dir()) / image).is_file()
+        print("PASS explicit new-account setup: selected deck and images delivered without an initial phone import; default setup refuses upload")
+    finally:
+        phone.close()
 
 
 def verify_account_routing(root, original_state, endpoint, data, current_package, original_phone, original_auth):
@@ -152,7 +185,7 @@ def verify_account_routing(root, original_state, endpoint, data, current_package
         anna_phone.full_upload_or_download(auth=auth, server_usn=result.server_media_usn, upload=True)
         anna_phone.reopen(after_full_sync=True)
         wait_for_media(anna_phone, auth)
-        initialize(anna_state, "anna-test", "test-password", endpoint)
+        initialize(anna_state, "anna-test", "test-password", endpoint, initial_packages=[current_package])
         assert (anna_state / "auth.bin").read_bytes() != (original_state / "auth.bin").read_bytes()
 
         payloads = {current_package.name: current_package.read_bytes(), extra_package.name: extra_package.read_bytes()}
